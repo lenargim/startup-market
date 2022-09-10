@@ -1,0 +1,238 @@
+.form
+  &-row
+    position: relative
+    &.active
+      .form-counter
+        background: $blue
+        color: #fff
+    &.error
+      .form-input
+        border-color: $red
+      .form-error
+        display: block
+      .form-counter
+        background-color: rgba(217,52,68, 1)
+        color: #fff
+      .form-description
+        display: none
+  &-input
+    border-radius: 4px
+    border: 1px solid rgba(206,212,218, 1)
+    background: $gray
+    padding: 20px 16px 18px
+    color: #4a4a4a
+    font-size: 16px
+    &:not(.focused):hover
+      box-shadow: 0 0 0 3px rgb(0 123 255 / 20%)
+    &:disabled
+      background: #CED4DA
+    &.focused
+      padding: 27px 16px 11px
+      & + .form-label
+        color: #aeaeae
+        font: 400 14px/16px $mainFont
+        top: 6px
+  &-label
+    position: absolute
+    color: rgba(74,74,74,1)
+    font: 400 16px/20px $mainFont
+    top: 20px
+    left: 16px
+  &-description
+    position: absolute
+    top: calc(100% + 10px)
+    color: #4A4A4A
+    font-size: 14px
+  &-error
+    display: none
+    color: $red
+    position: absolute
+    top: calc(100% + 10px)
+  &-counter
+    position: absolute
+    left: calc(100% + 30px)
+    top: 20px
+    padding: 5px 12px
+    font-size: 16px
+    line-height: 20px
+    border-radius: 14px
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: rgba(216,216,216, 1)
+    transition-duration: 0s
+    span
+      transition-duration: 0s
+.form-file
+  position: absolute
+  z-index: -1
+  opacity: 0
+  &-box
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 13px
+    padding: 30px 21px
+    border-radius: 4px
+    border: 1px dashed rgba(151,151,151, 1)
+    img
+      width: 116px
+      height: 65px
+      border-radius: 4px
+  &-explain
+    margin-top: 26px
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    gap: 1em
+    color: #4A4A4A
+  &-desc
+    width: 275px
+    font: 400 16px/24px $mainFont
+.form-radio
+  display: flex
+  align-items: flex-start
+  gap: 40px
+  &_border
+    border-bottom: 1px solid #000
+    padding-bottom: 20px
+    max-width: 550px
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    &:checked + .label
+      color: #000
+      &:before
+        border: 3px solid #07A0EC
+  &-label
+    font: 400 16px/20px $mainFont
+    color: #4A4A4A
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 16px
+    cursor: pointer
+    &::before
+      content: ''
+      box-sizing: border-box
+      width: 13px
+      height: 13px
+      border-radius: 50%
+      background: #fff
+      border: 1px solid #DEE2E6
+      flex-shrink: 0
+  &-description
+    margin-top: 42px
+    max-width: 548px
+    font: 400 16px/1.5 $mainFont
+    & ~ .form-radio-description
+      display: none
+    p:not(:last-of-type)
+      padding-bottom: 1em
+.form-price
+  display: flex
+  align-items: center
+  gap: 40px
+  &-input
+    width: fit-content
+  &-desc
+    color: #4A4A4A
+.form-checkbox
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    &:checked + .label
+      &:before
+        background: $blue
+      &:after
+        background: #ffffff
+        opacity: 1
+        left: calc(100% + 60px)
+  &-label
+    position: relative
+    font: 400 16px/20px $mainFont
+    cursor: pointer
+    &::before, &::after
+      content: ''
+      position: absolute
+      transition: all 0.3s ease
+    &::before
+      width: 32px
+      height: 16px
+      border-radius: 45px
+      border: 1px solid rgba(0,0,0, 0.25)
+      left: calc(100% + 40px)
+      top: 3px
+    &:after
+      width: 10px
+      height: 10px
+      background: #000000
+      opacity: .25
+      left: calc(100% + 43px)
+      border-radius: 50%
+      top: 7px
+.button-row
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  gap: 40px
+  .delete
+    display: flex
+    align-items: center
+    gap: 15px
+.form-award
+  width: 100%
+  &-label
+    text-align: center
+    color: $blue
+    border: 2px dashed $blue
+    padding: 42px
+    font: 500 22px/32px $mainFont
+    border-radius: 9px
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    &:hover
+      border-color: rgba(15,134,194, 1)
+      color: rgba(15,134,194, 1)
+.form-check
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    &:checked + .label
+      &:before
+        background: $blue
+        border-color: $blue
+      &:after
+        display: block
+  &-label
+    position: relative
+    font: 400 16px/24px $mainFont
+    cursor: pointer
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    gap: 16px
+    &::before, &::after
+      content: ''
+      transition: all 0.3s ease
+    &::before
+      width: 13px
+      height: 13px
+      border-radius: 2px
+      border: 1px solid rgba(0,0,0, 0.25)
+      left: 0
+      top: 5px
+      position: relative
+      flex-shrink: 0
+    &:after
+      position: absolute
+      width: 8px
+      height: 6px
+      top: 10px
+      left: 3px
+      background: #fff

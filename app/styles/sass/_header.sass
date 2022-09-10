@@ -1,0 +1,57 @@
+.header
+  &-menu
+    background: $dark
+    padding: 14px 0
+    &__nav
+      display: flex
+      align-items: center
+      gap: 46px
+      .nft
+        margin-left: 48px
+      &-link
+        color: #fff
+        font: 400 16px/24px $mainFont
+  &__wrap
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &__logo
+    max-width: 278px
+    aspect-ratio: 278/46
+  &__rightside
+    width: 25%
+    display: flex
+    align-items: center
+    justify-content: flex-start
+
+
+
+.header-create-project
+  &__logo
+    width: 354px
+    margin: 51px auto 74px
+    display: block
+  &__menu
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    background: #fff
+    gap: 80px
+    padding: 0 40px
+    border-radius: 16px
+    box-shadow: 0 19px 51px rgba(59,74,93, 0.205392), 0 6px 10px rgba(15,16,24, 0.144531)
+    &-link
+      color: rgba(74,74,74,1)
+      font: 400 16px/24px $mainFont
+    li
+      padding: 40px 0
+      height: 100%
+      position: relative
+      &.active::after
+        position: absolute
+        content: ''
+        height: 7px
+        background-color: $blue
+        left: 0
+        right: 0
+        bottom: 0

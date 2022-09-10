@@ -5,9 +5,13 @@
 	"main": "index.js",
 	"author": "WebDesign Master",
 	"type": "module",
-	"browserslist": [ "last 10 versions" ],
+	"browserslist": [
+		"last 10 versions"
+	],
 	"license": "ISC",
-	"scripts": { "start": "gulp" },
+	"scripts": {
+		"start": "gulp"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.18.10",
 		"@babel/preset-env": "^7.18.10",
@@ -37,5 +41,10 @@
 		"terser-webpack-plugin": "^5.3.3",
 		"webpack": "^5.74.0",
 		"webpack-stream": "^7.0.0"
+	},
+	"dependencies": {
+		"jquery": "^3.6.1",
+		"jquery-mask-plugin": "^1.14.16",
+		"tinymce": "^6.2.0"
 	}
 }

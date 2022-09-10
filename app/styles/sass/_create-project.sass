@@ -1,0 +1,173 @@
+.create-project
+  padding: 140px 0
+  h1, h2
+    font: 400 64px/1.375 $mainFont
+    padding-bottom: 80px
+  h3
+    font: 500 22px/1.455 $mainFont
+    padding-bottom: 40px
+  h4
+    font: 500 18px/24px $mainFont
+  &__main
+    grid-template-columns: 3fr 1fr
+    grid-gap: 30px
+    display: none
+    &.active
+      display: grid
+  &__form
+    &-block
+      &.name
+        margin-bottom: 84px
+      &.desc, &.label, &.location
+        padding-bottom: 100px
+        border-bottom: 1px solid #D2D2D2
+        margin-bottom: 84px
+      &.category h3
+        padding-bottom: 36px
+      &.location h3
+        padding-bottom: 46px
+      &.type h3
+        padding-bottom: 68px
+      .add
+        background: #fff
+    .form-row
+      max-width: 545px
+    &-text
+      max-width: 545px
+    &-numberwrap
+      padding-top: 60px
+      display: flex
+      flex-direction: column
+      gap: 40px
+    &-buttons
+      padding-top: 40px
+  .description
+    padding-bottom: 40px
+  textarea
+    height: 156px
+  &__navigation
+    margin-top: 150px
+    border-top: 1px solid #d2d2d2
+    padding-top: 52px
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &__back
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 16px
+    font: 400 20px/1.2 $mainFont
+    transition-duration: 0s
+    &:hover svg
+      fill: $blue
+    svg
+      fill: #000
+      width: 36px
+      height: 21px
+      transition-duration: 0s
+  &__sidebar
+    width: 275px
+    margin-left: auto
+    h3
+      padding: 40px 0
+    &-desc
+      color: #4A4A4A
+    &-list
+      display: flex
+      align-items: flex-start
+      flex-direction: column
+      gap: 32px
+    &-item
+      position: relative
+      color: #4A4A4A
+      &:before
+        content: ''
+        position: absolute
+        width: 12px
+        height: 12px
+        background: $blue
+        top: 6px
+        right: calc(100% + 20px)
+  .add
+    background: #fff
+    border: 1px solid #CED4DA
+    border-radius: 9px
+    padding: 48px 40px 40px
+    width: calc(8/9*100%)
+    overflow: hidden
+.describe
+  max-width: 781px
+.main-description
+  color: #4A4A4A
+  padding-bottom: 65px
+  font: 400 16px/24px $mainFont
+  p
+    &:not(:last-of-type)
+      padding-bottom: 24px
+.award
+  &__name
+    padding-bottom: 40px
+  &__desc
+    padding-bottom: 49px
+  &__img
+    padding-bottom: 60px
+    h4
+      padding-bottom: 20px
+  &__donation
+    padding: 60px 0
+    position: relative
+    &::before, &::after
+      position: absolute
+      content: ''
+      left: -40px
+      right: -40px
+      height: 1px
+      background: #CED4DA
+    &:before
+      top: 0
+    &:after
+      bottom: 0
+  &__delivery
+    padding: 60px 0
+    position: relative
+    &::after
+      position: absolute
+      content: ''
+      left: -40px
+      right: -40px
+      height: 1px
+      background: #CED4DA
+      bottom: 0
+    h4
+      padding-bottom: 40px
+    .checkbox-list
+      display: grid
+      grid-template-columns: 1fr 1fr
+      align-items: flex-start
+      justify-content: flex-start
+      padding-top: 40px
+      border-top: 1px solid #000
+      max-width: 545px
+      margin-top: 20px
+      .form-check
+        max-width: 250px
+  &__add
+    padding-top: 100px
+    width: calc(8/9*100%)
+  &__pickup
+    padding-top: 60px
+    .description
+      position: absolute
+      left: calc(100% + 40px)
+      top: 0
+      width: 215px
+      font: 400 14px/22px $mainFont
+      strong
+        font-weight: 500
+  &__phone
+    padding-top: 158px
+  .open-if-delivery
+    display: none
+    &.open
+      display: block
