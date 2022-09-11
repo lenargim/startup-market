@@ -8,6 +8,7 @@
     padding-bottom: 40px
   h4
     font: 500 18px/24px $mainFont
+    padding-bottom: 20px
   &__main
     grid-template-columns: 3fr 1fr
     grid-gap: 30px
@@ -18,31 +19,35 @@
     &-block
       &.name
         margin-bottom: 84px
-      &.desc, &.label, &.location
+      &.desc, &.label, &.location, &.wallet
         padding-bottom: 100px
         border-bottom: 1px solid #D2D2D2
         margin-bottom: 84px
-      &.category h3
-        padding-bottom: 36px
+      &.category
+        padding-bottom: 84px
+        h3
+          padding-bottom: 36px
       &.location h3
         padding-bottom: 46px
-      &.type h3
-        padding-bottom: 68px
+      &.type
+        padding-bottom: 60px
+        h3
+          padding-bottom: 68px
       .add
         background: #fff
+      &.contacts-data
+        padding-top: 65px
     .form-row
       max-width: 545px
     &-text
       max-width: 545px
-    &-numberwrap
-      padding-top: 60px
-      display: flex
-      flex-direction: column
-      gap: 40px
+      &_wallet
+        max-width: 635px
     &-buttons
       padding-top: 40px
   .description
     padding-bottom: 40px
+    font: 400 16px/24px $mainFont
   textarea
     height: 156px
   &__navigation
@@ -112,8 +117,6 @@
     padding-bottom: 49px
   &__img
     padding-bottom: 60px
-    h4
-      padding-bottom: 20px
   &__donation
     padding: 60px 0
     position: relative

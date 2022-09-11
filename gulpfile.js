@@ -118,7 +118,7 @@ async function buildhtml() {
 }
 
 async function cleandist() {
-	await deleteAsync('dist/**/*', { force: true })
+		await deleteAsync('dist/**/*', { force: true })
 }
 
 function deploy() {

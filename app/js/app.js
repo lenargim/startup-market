@@ -96,12 +96,14 @@ $(document).ready(function () {
     // Trigger Promises
     Promise.all(readers).then((values) => {
       if (values.length > 0) {
-        $('.form-row-file').addClass('active')
+        $('.form-row-file').addClass('active');
+
       } else {
         $('.form-row-file').removeClass('active')
       }
       values.map((el, i) => {
-        $('.form-file-box').find(`#photo-${i + 1}`).attr('src', `${el}`);
+        $(`.form-file-box #photo-${i + 1} img`).attr('src', `${el}`);
+        $(`.form-file-box #photo-${i + 1}`).addClass('uploaded')
       });
       $('.form-counter-photo .current').text(values.length)
     });
@@ -133,14 +135,14 @@ $(document).ready(function () {
 
 
   $('.numberonly').keypress(function (e) {
-    var charCode = (e.which) ? e.which : event.keyCode;
+    const charCode = (e.which) ? e.which : event.keyCode;
     if (String.fromCharCode(charCode).match(/[^0-9]/g))
       return false;
   });
 
   $('.form-radio-input').on('change', function () {
     const val = $(this).val();
-    const type = $(this).attr('name')
+    const type = $(this).data('context');
     $(`.${type}`).find('.form-radio-description').hide();
     const el = $(`.form-radio-description[data-value="${val}"]`).show()
   });
@@ -158,7 +160,7 @@ $(document).ready(function () {
     } else if ($(this).hasClass('step-prev')) {
       $('.create-project__main').eq(index - 1).addClass('active');
       $('.header-create-project__menu li').eq(index - 1).addClass('active')
-    } else if ( $(this).hasClass('header-create-project__menu-link') ) {
+    } else if ($(this).hasClass('header-create-project__menu-link')) {
       const li = $(this).parent('li');
       const indexLi = li.index();
       li.addClass('active');
@@ -172,4 +174,87 @@ $(document).ready(function () {
   $('#award-delivery').on('change', function () {
     $(this).prop('checked') === true ? $('.open-if-delivery').addClass('open') : $('.open-if-delivery').removeClass('open');
   })
+
+  $('#create-project-form').submit(function (e) {
+    e.preventDefault();
+    $('.form-file-img.uploaded').each(function (i, el) {
+      let url = $(this).find('img').attr('src');
+      $('#create-project-form').append(`<input type="hidden" name="create-project-photo-${i}" value="${url}" /> `);
+    })
+
+    const data = $(this).serializeArray();
+    console.log(data)
+  })
+
+  $('.close').on('click', function () {
+    $(this).parent().removeClass('uploaded');
+    $(this).siblings('img').attr('src', '');
+  });
+});
+
+
+// Iterate over each select element
+$('select').each(function() {
+
+  // Cache the number of options
+  var $this = $(this),
+    numberOfOptions = $(this).children('option').length;
+
+  // Hides the select element
+  $this.addClass('s-hidden');
+
+  // Wrap the select element in a div
+  $this.wrap('<div class="select"></div>');
+
+  // Insert a styled div to sit over the top of the hidden select element
+  $this.after('<div class="styledSelect"></div>');
+
+  // Cache the styled div
+  var $styledSelect = $this.next('div.styledSelect');
+  $( "<div class='select-label'>Категория</div>" ).insertAfter( $styledSelect );
+
+  // Show the first select option in the styled div
+  //$styledSelect.text($this.children('option').eq(0).text());
+
+  // Insert an unordered list after the styled div and also cache the list
+  var $list = $('<ul />', {
+    'class': 'options'
+  }).insertAfter($styledSelect);
+
+  // Insert a list item into the unordered list for each select option
+  for (var i = 0; i < numberOfOptions; i++) {
+    $('<li />', {
+      text: $this.children('option').eq(i).text(),
+      rel: $this.children('option').eq(i).val()
+    }).appendTo($list);
+  }
+
+  // Cache the list items
+  var $listItems = $list.children('li');
+
+  // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+  $styledSelect.click(function(e) {
+    e.stopPropagation();
+    $('div.styledSelect.active').each(function() {
+      $(this).removeClass('active').next('ul.options').hide();
+    });
+    $(this).toggleClass('active').next('ul.options').toggle();
+  });
+
+  // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
+  // Updates the select element to have the value of the equivalent option
+  $listItems.click(function(e) {
+    e.stopPropagation();
+    $styledSelect.text($(this).text()).removeClass('active');
+    $this.val($(this).attr('rel'));
+    $list.hide();
+    $styledSelect.addClass('filled')
+  });
+
+  // Hides the unordered list when clicking outside of it
+  $(document).click(function() {
+    $styledSelect.removeClass('active');
+    $list.hide();
+  });
+
 });
