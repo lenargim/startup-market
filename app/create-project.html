@@ -12,13 +12,14 @@
               <div class="description">Должно быть простым, запоминающимся и отражать суть вашего проекта.</div>
             </div>
             <div class="form-row">
-              <input type="text" class="form-input form-input-countered" id="create-project-name" name="project-name">
+              <input type="text" class="form-input form-input-countered required" id="create-project-name" name="project-name">
               <label class="form-label" for="create-project-name">Название проекта</label>
               <div class="form-counter">
                 <span class="current">0</span>/
                 <span class="max">60</span>
               </div>
-              <div class="form-error">Вы привысили макимально допустимое количество симоволов</div>
+              <div class="form-error form-error-length">Вы привысили макимально допустимое количество симоволов</div>
+              <div class="form-error form-error-empty">Заполните поле</div>
               <div class="form-description"></div>
             </div>
           </div>
@@ -31,13 +32,14 @@
               </div>
             </div>
             <div class="form-row">
-              <textarea type="text" class="form-input form-input-countered" id="create-project-desc" name="project-desc"></textarea>
+              <textarea type="text" class="form-input form-input-countered required" id="create-project-desc" name="project-desc"></textarea>
               <label class="form-label" for="create-project-desc">Описание проекта</label>
               <div class="form-counter">
                 <span class="current">0</span>/
                 <span class="max">300</span>
               </div>
-              <div class="form-error">Вы привысили макимально допустимое количество симоволов</div>
+              <div class="form-error form-error-length">Вы привысили макимально допустимое количество симоволов</div>
+              <div class="form-error form-error-empty">Заполните поле</div>
             </div>
           </div>
           <div class="create-project__form-block label">
@@ -56,19 +58,15 @@
               <input type="text" class="hidden create-project-photos" name="create-project-photos">
               <div class="form-file-box">
                 <div class="form-file-img" id="photo-1">
-                  <img src="">
                   <div class="close"></div>
                 </div>
                 <div class="form-file-img" id="photo-2">
-                  <img src="">
                   <div class="close"></div>
                 </div>
                 <div class="form-file-img" id="photo-3">
-                  <img src="">
                   <div class="close"></div>
                 </div>
                 <div class="form-file-img" id="photo-4">
-                  <img src="">
                   <div class="close"></div>
                 </div>
               </div>
@@ -87,11 +85,13 @@
               <h3>Категория</h3>
             </div>
             <div class="form-row">
-              <select name="project-category" id="project-category">
+              <select name="project-category" class="required" id="project-category">
+                <option disabled selected value=""></option>
                 <option value="val1">val1</option>
                 <option value="val2">val2</option>
                 <option value="val3">val3</option>
               </select>
+              <div class="form-error form-error-empty">Выберите категорию</div>
             </div>
           </div>
           <div class="create-project__form-block location">
@@ -148,13 +148,13 @@
           </div>
           <div class="form-row-wrap">
             <div class="form-price form-row">
-              <input type="number" name="project-duration" class="form-input form-price-input numberonly" id="create-project-days"
+              <input type="number" name="project-duration" class="form-input form-price-input numberonly required" id="create-project-days"
                      data-max-number="60">
               <label for="create-project-days" class="form-label">Дней сбора</label>
               <span class="form-price-desc">максимум 60 дней</span>
             </div>
             <div class="form-price form-row">
-              <input type="number" name="project-sum" class="form-input form-price-input numberonly" id="create-project-sum">
+              <input type="number" name="project-sum" class="form-input form-price-input numberonly required" id="create-project-sum">
               <label for="create-project-sum" class="form-label">Сумма сбора</label>
               <div class="form-description">Valid feedback</div>
               <img src="images/Wallet_Extension.svg" class="form-price-desc form-price-desc_img">
@@ -234,14 +234,13 @@
                 <h4>Изображение награды (не обязательно)</h4>
                 <div class="form-row form-row-file">
                   <input type="file"
-                         name="create-project-photos"
+                         name="project-award-photo"
                          accept=".png, .jpg, .jpeg"
-                         class="form-file"
-                         value="create-project-photos"
+                         class="form-award-input"
                          id="award-img"
                   >
-                  <div class="form-file-box">
-                    <img src="" id="award-photo-1">
+                  <div class="award__img-box">
+                    <div class="award__img-pic"></div>
                   </div>
                   <div class="form-file-explain">
                     <div class="form-file-desc">Прикрепить JPEG, PNG или BMP. Не более 5 МБ. Минимальное разрешение
@@ -383,7 +382,7 @@
               </div>
             </div>
             <div class="form-row">
-              <input type="text" class="form-input" id="contacts-name" name="project-contacts-name">
+              <input type="text" class="form-input required" id="contacts-name" name="project-contacts-name">
               <label class="form-label" for="contacts-name">Имя, никнейм или название проекта</label>
               <div class="form-error"></div>
               <div class="form-description"></div>
@@ -397,9 +396,14 @@
             </div>
             <div class="form-row-wrap">
               <div class="form-row">
-                <input type="text" class="form-input" id="contacts-mail" name="project-contacts-email">
+                <input type="text"
+                       class="form-input mail required"
+                       id="contacts-mail"
+                       name="project-contacts-email"
+                >
                 <label class="form-label" for="contacts-mail">Электронная почта</label>
-                <div class="form-error"></div>
+                <div class="form-error form-error-empty">Введите почту</div>
+                <div class="form-error form-error-mail">Почтовый адрес введен некорректно</div>
                 <div class="form-description"></div>
               </div>
               <div class="form-row">
@@ -430,7 +434,7 @@
               </div>
             </div>
             <div class="form-row">
-              <input type="text" class="form-input" id="auth-wallet" name="project-wallet-number">
+              <input type="text" class="form-input required" id="auth-wallet" name="project-wallet-number">
               <label class="form-label" for="auth-wallet">Номер кошелька</label>
               <div class="form-error"></div>
               <div class="form-description"></div>

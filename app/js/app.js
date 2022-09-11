@@ -53,6 +53,11 @@ $(document).ready(function () {
     },
     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
   });
+  $('.mail').mask("A", {
+    translation: {
+      "A": { pattern: /[\w@\-.+]/, recursive: true }
+    }
+  });
 
 
   // Layout events
@@ -62,7 +67,7 @@ $(document).ready(function () {
   })
   $('.form-input').on('blur', function () {
     if ($(this).val() === '') {
-      $(this).removeClass('focused')
+      $(this).removeClass('focused');
       $(this).parents('.form-row').removeClass('active')
     }
   });
@@ -74,54 +79,79 @@ $(document).ready(function () {
     counter.find('.current').text(length);
 
     if (length > max) {
-
       parent.removeClass('active').addClass('error');
+      $(this).siblings('.form-error-length').show();
+      $(this).addClass('error-length');
     } else {
       parent.addClass('active').removeClass('error');
+      $(this).siblings('.form-error-length').hide();
+      $(this).removeClass('error-length');
     }
+  });
+
+  $('.form-award-input').on('change', function (e) {
+    let input = $(this);
+    let file = e.currentTarget.files[0];
+    if (!file) return;
+    if (file.size > 5242880) {
+      alert('Файл слишком большой');
+      return;
+    }
+    readFileAsUrl(file).then(url => {
+      const image = new Image();
+      //Set the Base64 string return from FileReader as source.
+      image.src = url;
+      //Validate the File Height and Width.
+      image.onload = function () {
+        var height = this.height;
+        var width = this.width;
+        if (width < 600 || height < 338) {
+          alert("Минимальное разрешение 600×338 пикселей");
+          return false;
+        }
+        $('.award__img-pic').append(image);
+        input.siblings('.award__img-box').addClass('uploaded');
+        return true;
+      }
+    });
   });
 
   $('.form-file').on('change', function (ev) {
     let files = ev.currentTarget.files;
-    let readers = [];
-
-    // Abort if there were no files selected
     if (!files.length) return;
 
     // Store promises in array
     for (let i = 0; i < files.length; i++) {
-      readers.push(readFileAsUrl(files[i]));
+      readFileAsUrl(files[i]).then(url => {
+        const image = new Image();
+        //Set the Base64 string return from FileReader as source.
+        image.src = url;
+        //Validate the File Height and Width.
+        image.onload = function () {
+          var height = this.height;
+          var width = this.width;
+          if (width < 1300 || height < 732) {
+            alert("Минимальное разрешение 1300×732 пикселей");
+            return false;
+          }
+          $('.form-row-file').addClass('active');
+          let box = $(`#photo-${++i}`);
+          box.append(image);
+          box.addClass('uploaded');
+          $('.form-counter-photo .current').text(i++);
+          return true;
+        }
+      })
     }
+  });
 
-    // Trigger Promises
-    Promise.all(readers).then((values) => {
-      if (values.length > 0) {
-        $('.form-row-file').addClass('active');
-
-      } else {
-        $('.form-row-file').removeClass('active')
-      }
-      values.map((el, i) => {
-        $(`.form-file-box #photo-${i + 1} img`).attr('src', `${el}`);
-        $(`.form-file-box #photo-${i + 1}`).addClass('uploaded')
-      });
-      $('.form-counter-photo .current').text(values.length)
-    });
-
-    function readFileAsUrl(file) {
-      return new Promise(function (resolve, reject) {
-        let fr = new FileReader();
-
-        fr.onload = function () {
-          resolve(fr.result);
-        };
-
-        fr.onerror = function () {
-          reject(fr);
-        };
-
-        fr.readAsDataURL(file);
-      });
+  $('.close').on('click', function () {
+    $(this).parent().removeClass('uploaded');
+    $(this).siblings('img').remove();
+    const count = $('.form-file-img.uploaded').length;
+    $('.form-row-file .current').text(count)
+    if (count === 0) {
+      $('.form-row-file').removeClass('active');
     }
   });
 
@@ -132,6 +162,20 @@ $(document).ready(function () {
         ? $(this).val(maxNumber) : false;
     }
   });
+
+  $('.mail').on('input change', function () {
+    let val = $(this).val();
+
+    if (!validateEmail(val)) {
+      $(this).addClass('mail-mask-error');
+      $(this).parent('.form-row').addClass('error')
+    } else {
+      $(this).removeClass('mail-mask-error');
+      $(this).parent('.form-row').removeClass('error')
+    }
+
+
+  })
 
 
   $('.numberonly').keypress(function (e) {
@@ -179,82 +223,50 @@ $(document).ready(function () {
     e.preventDefault();
     $('.form-file-img.uploaded').each(function (i, el) {
       let url = $(this).find('img').attr('src');
-      $('#create-project-form').append(`<input type="hidden" name="create-project-photo-${i}" value="${url}" /> `);
+      $('#create-project-form').append(`<input type="hidden" name="project-photo-${i}" value="${url}" /> `);
+    })
+    $('.award__img-box.uploaded').each(function (i, el) {
+      let url = $(this).find('img').attr('src');
+      $('#create-project-form').append(`<input type="hidden" name="project-award-photo-${i}" value="${url}" /> `);
     })
 
+    const requiredFields = $(this).find('.required');
+    //console.log(`total - ${requiredFields.length}`)
+    requiredFields.each(function () {
+      if ( !$(this).val() ) {
+        console.log('error empty')
+      } else if ( $(this).hasClass('error-length') ) {
+        console.log('error length');
+      } else if ( $(this).hasClass('mail-mask-error') ) {
+        console.log('error mail mask')
+      }
+    })
+
+
+
     const data = $(this).serializeArray();
-    console.log(data)
+    //console.log(data)
   })
-
-  $('.close').on('click', function () {
-    $(this).parent().removeClass('uploaded');
-    $(this).siblings('img').attr('src', '');
-  });
 });
 
+function readFileAsUrl(file) {
+  return new Promise(function (resolve, reject) {
+    let fr = new FileReader();
 
-// Iterate over each select element
-$('select').each(function() {
+    fr.onload = function () {
+      resolve(fr.result);
+    };
 
-  // Cache the number of options
-  var $this = $(this),
-    numberOfOptions = $(this).children('option').length;
+    fr.onerror = function () {
+      reject(fr);
+    };
 
-  // Hides the select element
-  $this.addClass('s-hidden');
-
-  // Wrap the select element in a div
-  $this.wrap('<div class="select"></div>');
-
-  // Insert a styled div to sit over the top of the hidden select element
-  $this.after('<div class="styledSelect"></div>');
-
-  // Cache the styled div
-  var $styledSelect = $this.next('div.styledSelect');
-  $( "<div class='select-label'>Категория</div>" ).insertAfter( $styledSelect );
-
-  // Show the first select option in the styled div
-  //$styledSelect.text($this.children('option').eq(0).text());
-
-  // Insert an unordered list after the styled div and also cache the list
-  var $list = $('<ul />', {
-    'class': 'options'
-  }).insertAfter($styledSelect);
-
-  // Insert a list item into the unordered list for each select option
-  for (var i = 0; i < numberOfOptions; i++) {
-    $('<li />', {
-      text: $this.children('option').eq(i).text(),
-      rel: $this.children('option').eq(i).val()
-    }).appendTo($list);
-  }
-
-  // Cache the list items
-  var $listItems = $list.children('li');
-
-  // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
-  $styledSelect.click(function(e) {
-    e.stopPropagation();
-    $('div.styledSelect.active').each(function() {
-      $(this).removeClass('active').next('ul.options').hide();
-    });
-    $(this).toggleClass('active').next('ul.options').toggle();
+    fr.readAsDataURL(file);
   });
+}
 
-  // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
-  // Updates the select element to have the value of the equivalent option
-  $listItems.click(function(e) {
-    e.stopPropagation();
-    $styledSelect.text($(this).text()).removeClass('active');
-    $this.val($(this).attr('rel'));
-    $list.hide();
-    $styledSelect.addClass('filled')
-  });
 
-  // Hides the unordered list when clicking outside of it
-  $(document).click(function() {
-    $styledSelect.removeClass('active');
-    $list.hide();
-  });
-
-});
+function validateEmail(val) {
+  const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return emailReg.test( val );
+}
