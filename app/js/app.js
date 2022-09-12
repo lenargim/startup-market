@@ -55,7 +55,7 @@ $(document).ready(function () {
   });
   $('.mail').mask("A", {
     translation: {
-      "A": { pattern: /[\w@\-.+]/, recursive: true }
+      "A": {pattern: /[\w@\-.+]/, recursive: true}
     }
   });
 
@@ -68,29 +68,23 @@ $(document).ready(function () {
   $('.form-input').on('blur', function () {
     if ($(this).val() === '') {
       $(this).removeClass('focused');
-      $(this).parents('.form-row').removeClass('active')
+      $(this).parents('.form-row').removeClass('active');
+      if ($(this).hasClass('required') ) {
+        $(this).parent('.form-row').addClass('error');
+        $(this).siblings('.form-error-empty').show()
+      }
     }
   });
-  $('.form-input-countered').on('input change', function () {
-    const parent = $(this).parents('.form-row');
-    const counter = $(this).siblings('.form-counter');
-    const length = $(this).val().length;
-    const max = counter.find('.max').text();
-    counter.find('.current').text(length);
 
-    if (length > max) {
-      parent.removeClass('active').addClass('error');
-      $(this).siblings('.form-error-length').show();
-      $(this).addClass('error-length');
-    } else {
-      parent.addClass('active').removeClass('error');
-      $(this).siblings('.form-error-length').hide();
-      $(this).removeClass('error-length');
-    }
-  });
+  $('.award__filled .form-counter').each(function () {
+    let currentLength = $(this).siblings('.form-input-countered').val().length;
+    $(this).find('.current').text(currentLength);
+  })
 
   $('.form-award-input').on('change', function (e) {
+
     let input = $(this);
+    let picBox = $(this).siblings('.award__img-box').find('.award__img-pic');
     let file = e.currentTarget.files[0];
     if (!file) return;
     if (file.size > 5242880) {
@@ -109,16 +103,37 @@ $(document).ready(function () {
           alert("Минимальное разрешение 600×338 пикселей");
           return false;
         }
-        $('.award__img-pic').append(image);
+
+        if (!picBox.find('img').length) {
+          picBox.append(image);
+        } else {
+          picBox.find('img').replaceWith(image)
+        }
         input.siblings('.award__img-box').addClass('uploaded');
         return true;
       }
     });
   });
 
-  $('.form-file').on('change', function (ev) {
-    let files = ev.currentTarget.files;
+  $('.award__add').on('click', function () {
+    $('.award__new').slideToggle();
+  });
+
+  $('.award__new .delete').on('click', function (e) {
+    e.preventDefault();
+    $('.award__new').find('input[type=text], input[type=number], textarea').val('');
+    $('.award__new .focused').removeClass('focused');
+    $('.award__new .active').removeClass('active');
+    $('.award__new .current').text('0');
+  });
+
+  $('.form-file').on('change', function (e) {
+    let files = e.currentTarget.files;
     if (!files.length) return;
+    if (files.length > 4) {
+      alert('Максимум 4 изображения');
+      return;
+    }
 
     // Store promises in array
     for (let i = 0; i < files.length; i++) {
@@ -136,7 +151,14 @@ $(document).ready(function () {
           }
           $('.form-row-file').addClass('active');
           let box = $(`#photo-${++i}`);
-          box.append(image);
+
+          if (!box.find('img').length) {
+            box.append(image);
+          } else {
+            box.find('img').replaceWith(image)
+          }
+
+          //box.append(image);
           box.addClass('uploaded');
           $('.form-counter-photo .current').text(i++);
           return true;
@@ -145,13 +167,37 @@ $(document).ready(function () {
     }
   });
 
-  $('.close').on('click', function () {
+  $('.label .close').on('click', function () {
     $(this).parent().removeClass('uploaded');
     $(this).siblings('img').remove();
     const count = $('.form-file-img.uploaded').length;
-    $('.form-row-file .current').text(count)
+    $('.form-row-file .current').text(count);
     if (count === 0) {
       $('.form-row-file').removeClass('active');
+    }
+  });
+
+  $('.form-input[type=text], .form-input[type=number]').on('input change', function () {
+    const parent = $(this).parents('.form-row');
+    if ( $(this).hasClass('form-input-countered') ) {
+      const counter = $(this).siblings('.form-counter');
+      const length = $(this).val().length;
+      const max = counter.find('.max').text();
+      counter.find('.current').text(length);
+
+      if (length > max) {
+        parent.removeClass('active').addClass('error');
+        $(this).siblings('.form-error-length').show();
+        $(this).addClass('error-length');
+      } else {
+        parent.addClass('active').removeClass('error');
+        $(this).siblings('.form-error').hide();
+        $(this).removeClass('error-length');
+      }
+    } else {
+      parent.removeClass('error');
+      $(this).siblings('.form-error').hide();
+      //$(this).removeClass('error-length');
     }
   });
 
@@ -165,18 +211,31 @@ $(document).ready(function () {
 
   $('.mail').on('input change', function () {
     let val = $(this).val();
-
     if (!validateEmail(val)) {
       $(this).addClass('mail-mask-error');
-      $(this).parent('.form-row').addClass('error')
+      $(this).parent('.form-row').addClass('error');
+      $(this).siblings('.form-error-mail').show();
     } else {
       $(this).removeClass('mail-mask-error');
-      $(this).parent('.form-row').removeClass('error')
+      $(this).parent('.form-row').removeClass('error');
+      $(this).siblings('.form-error-mail').hide();
     }
+  });
 
+  $('input[name=project-location]').on('change', function () {
+    $(this).val() === 'local' ? $('#location-city').addClass('required') : $('#location-city').removeClass('required')
+  });
+  $('input[name=project-type]').on('change', function () {
+    const time = $('#create-project-days');
+    if ($(this).val() === 'all-and-more') {
+      time.addClass('required');
+      time.parent('.form-row').show();
+    } else if ($(this).val() === 'all-or-nothing') {
+      time.removeClass('required');
+      time.parent('.form-row').hide();
 
-  })
-
+    }
+  });
 
   $('.numberonly').keypress(function (e) {
     const charCode = (e.which) ? e.which : event.keyCode;
@@ -188,9 +247,8 @@ $(document).ready(function () {
     const val = $(this).val();
     const type = $(this).data('context');
     $(`.${type}`).find('.form-radio-description').hide();
-    const el = $(`.form-radio-description[data-value="${val}"]`).show()
+    $(`.form-radio-description[data-value="${val}"]`).show()
   });
-
 
   $('.step-event').on('click', function (e) {
     e.preventDefault();
@@ -215,37 +273,83 @@ $(document).ready(function () {
     }, 1000);
   });
 
-  $('#award-delivery').on('change', function () {
-    $(this).prop('checked') === true ? $('.open-if-delivery').addClass('open') : $('.open-if-delivery').removeClass('open');
-  })
+  $('#award-delivery, #award-delivery-filled').on('change', function () {
+    if ($(this).prop('checked')) {
+      $('.open-if-delivery').addClass('open');
+      $('input[name="project-pickup-address"]').addClass('required');
+      $('input[name="project-delivery-phone"]').addClass('required');
+    } else {
+      $('.open-if-delivery').removeClass('open');
+      $('input[name="project-pickup-address"]').removeClass('required');
+      $('input[name="project-delivery-phone"]').removeClass('required');
+    }
+  });
 
-  $('#create-project-form').submit(function (e) {
+  $('.edit').on('click', function (e) {
     e.preventDefault();
+    const parent = $(this).parents('.could-be-editted');
+    parent.addClass('is-eddited');
+    parent.find('input, textarea, label button').attr('disabled', false)
+  });
+
+  $('.save').on('click', function (e) {
+    e.preventDefault();
+    const parent = $(this).parents('.is-eddited');
+    parent.removeClass('is-eddited');
+    parent.find('input, textarea, label button').attr('disabled', true);
+    parent.find('.form-row').removeClass('active');
+  });
+
+  $('.error-box .close').on('click', function () {
+    $('.error-box').hide();
+  });
+
+
+  // SUBMIT
+  $('#create-project-form').on('submit', function (e) {
+    e.preventDefault();
+    // put base64 url into form
     $('.form-file-img.uploaded').each(function (i, el) {
       let url = $(this).find('img').attr('src');
       $('#create-project-form').append(`<input type="hidden" name="project-photo-${i}" value="${url}" /> `);
-    })
+    });
     $('.award__img-box.uploaded').each(function (i, el) {
       let url = $(this).find('img').attr('src');
       $('#create-project-form').append(`<input type="hidden" name="project-award-photo-${i}" value="${url}" /> `);
-    })
+    });
 
+    // Check if errors exist
     const requiredFields = $(this).find('.required');
-    //console.log(`total - ${requiredFields.length}`)
+    const errorFieldsId = [];
+    const errorPageIndexArray = [];
     requiredFields.each(function () {
-      if ( !$(this).val() ) {
-        console.log('error empty')
-      } else if ( $(this).hasClass('error-length') ) {
-        console.log('error length');
-      } else if ( $(this).hasClass('mail-mask-error') ) {
-        console.log('error mail mask')
+      if (!$(this).val() || $(this).hasClass('error-length') || $(this).hasClass('mail-mask-error')) {
+        errorFieldsId.push($(this).attr('id'));
+        $(this).parents('.form-row').addClass('error');
+        if (!$(this).val()) $(this).siblings('.form-error-empty').show();
+        if ($(this).hasClass('error-length')) $(this).siblings('.form-error-length').show();
+        if (!$(this).hasClass('mail-mask-error') && $(this).val()) $(this).siblings('.form-error-mail').show()
       }
-    })
+    });
+
+    errorFieldsId.length ? $('.error-box').addClass('active') : $('.error-box').removeClass('active');
+
+    errorFieldsId.map(id => {
+      errorPageIndexArray.push($(`#${id}`).parents('.create-project__main').index())
+    });
+    const cleanArr = errorPageIndexArray.filter((item, pos) => errorPageIndexArray.indexOf(item) == pos);
 
 
+    // Highlight error menus
+    $('.header-create-project__menu li').each(function() {
+      cleanArr.includes($(this).index()) ? $(this).addClass('error') :  $(this).removeClass('error');
+    });
 
-    const data = $(this).serializeArray();
-    //console.log(data)
+    // if no errors
+    if (!errorFieldsId.length) {
+      const data = $(this).serializeArray();
+      window.location.href = "./thankyou.html";
+    }
   })
 });
 
@@ -265,8 +369,7 @@ function readFileAsUrl(file) {
   });
 }
 
-
 function validateEmail(val) {
   const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-  return emailReg.test( val );
+  return emailReg.test(val);
 }

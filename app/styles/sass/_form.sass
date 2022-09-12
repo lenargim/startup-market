@@ -1,6 +1,8 @@
 .form
   &-row
     position: relative
+    &-select
+      display: flex
     &-wrap
       display: grid
       grid-template-columns: 1fr
@@ -27,7 +29,8 @@
     &:not(.focused):hover
       box-shadow: 0 0 0 3px rgb(0 123 255 / 20%)
     &:disabled
-      background: #CED4DA
+      background-color: rgba(233,236,239, 1)
+      border: 1px solid rgba(206,212,218, 1)
     &.focused
       padding: 27px 16px 11px
       & + .form-label
@@ -77,13 +80,19 @@
     padding: 30px 21px
     border-radius: 4px
     border: 1px dashed rgba(151,151,151, 1)
+    & > div:first-child
+      filter: none
+    & > div.uploaded, div.uploaded + div
+      filter: none
+
   &-img
     width: 116px
     height: 65px
     border-radius: 4px
     position: relative
-    background: #ccc
+    background: url("../images/image.svg") center center/cover no-repeat
     order: 1
+    filter: opacity(0.35)
     img
       width: 100%
       height: 100%
@@ -92,31 +101,6 @@
       order: 0
       .close
         display: block
-    .close
-      width: 16px
-      height: 16px
-      background: #D8D8D8
-      border-radius: 50%
-      position: absolute
-      right: -5px
-      top: -5px
-      cursor: pointer
-      display: none
-      &:hover
-        background: $blue
-        &::before, &::after
-          background: #fff
-      &::before, &::after
-        content: ''
-        height: 2px
-        width: 10px
-        background: #4C4C4C
-        position: absolute
-        transform-origin: center center
-      &:before
-        transform: translate(3px, 6.5px) rotate(45deg)
-      &:after
-        transform: translate(3px, 6.5px) rotate(-45deg)
   &-explain
     margin-top: 26px
     display: flex
@@ -272,12 +256,13 @@
       position: relative
       flex-shrink: 0
     &:after
+      display: none
       position: absolute
-      width: 8px
-      height: 6px
-      top: 10px
+      width: 9px
+      height: 7px
+      top: 9px
       left: 3px
-      background: #fff
+      background: url("../images/icon-check.svg") center center/contain no-repeat
 .form-wallet
   display: flex
   align-items: center
@@ -315,20 +300,20 @@
   visibility: hidden
   padding-right: 10px
   position: absolute
-
+.form-row-select
+  .form-error
+    display: none
+  &.error
+    .form-error
+      display: block
+    .styledSelect, .options
+      border-color: $red
 .select
   cursor: pointer
   display: inline-block
   font: 400 16px/20px $mainFont
   color: #4A4A4A
   width: 100%
-  .form-error
-    display: none
-  &.error
-    & + .form-error
-      display: block
-    .styledSelect
-      border-color: $red
   &-label
     position: absolute
     left: 16px
@@ -347,6 +332,7 @@
   height: 58px
   border-radius: 4px
   font: 400 16px/20px $mainFont
+  z-index: 2
   &.filled ~ .select-label
     top: 6px
     font: 400 14px/17px $mainFont
@@ -357,15 +343,20 @@
   content: ""
   width: 0
   height: 0
-  border: 5px solid transparent
-  border-color: black transparent transparent transparent
   position: absolute
-  top: 9px
-  right: 6px
+  top: calc(50% - 3px)
+  right: 16px
+  border: solid black
+  border-width: 0 1.5px 1.5px 0
+  display: inline-block
+  padding: 3px
+  transform: rotate(45deg)
+  transition: all 0.2s ease
 
 .styledSelect:active,
 .styledSelect.active
-  background-color: #eee
+  &:after
+    transform: rotate(-135deg)
 
 .options
   display: none
@@ -378,6 +369,9 @@
   padding: 0 0
   list-style: none
   border: 1px solid #ccc
+  border-radius: 4px
+  border-top: none
+  background: #f8f8f8
 
 .options li
   display: block

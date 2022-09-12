@@ -12,7 +12,8 @@
               <div class="description">Должно быть простым, запоминающимся и отражать суть вашего проекта.</div>
             </div>
             <div class="form-row">
-              <input type="text" class="form-input form-input-countered required" id="create-project-name" name="project-name">
+              <input type="text" class="form-input form-input-countered required" id="create-project-name"
+                     name="project-name">
               <label class="form-label" for="create-project-name">Название проекта</label>
               <div class="form-counter">
                 <span class="current">0</span>/
@@ -32,7 +33,8 @@
               </div>
             </div>
             <div class="form-row">
-              <textarea type="text" class="form-input form-input-countered required" id="create-project-desc" name="project-desc"></textarea>
+              <textarea type="text" class="form-input form-input-countered required" id="create-project-desc"
+                        name="project-desc"></textarea>
               <label class="form-label" for="create-project-desc">Описание проекта</label>
               <div class="form-counter">
                 <span class="current">0</span>/
@@ -84,7 +86,7 @@
             <div class="create-project__form-text">
               <h3>Категория</h3>
             </div>
-            <div class="form-row">
+            <div class="form-row form-row-select">
               <select name="project-category" class="required" id="project-category">
                 <option disabled selected value=""></option>
                 <option value="val1">val1</option>
@@ -100,11 +102,13 @@
             </div>
             <div class="form-radio">
               <div class="form-radio-item">
-                <input type="radio" name="project-location" data-context="location" checked value="global" class="form-radio-input" id="radio-global">
+                <input type="radio" name="project-location" data-context="location" checked value="global"
+                       class="form-radio-input" id="radio-global">
                 <label for="radio-global" class="label form-radio-label">Мой проект глобальный</label>
               </div>
               <div class="form-radio-item">
-                <input type="radio" name="project-location" data-context="location" value="local" class="form-radio-input" id="radio-local">
+                <input type="radio" name="project-location" data-context="location" value="local"
+                       class="form-radio-input" id="radio-local">
                 <label for="radio-local" class="label form-radio-label">Мой проект в конкретном
                   городе/регионе/стране</label>
               </div>
@@ -119,6 +123,7 @@
                 <input type="text" class="form-input" id="location-city" name="project-address">
                 <label for="location-city" class="form-label">Укажите страну или город</label>
                 <div class="form-description">Valid feedback</div>
+                <div class="form-error form-error-empty">Укажите страну или город</div>
               </div>
             </div>
           </div>
@@ -128,35 +133,41 @@
             </div>
             <div class="form-radio form-radio_border">
               <div class="form-radio-item">
-                <input type="radio" name="project-type" data-context="type" checked value="global" class="form-radio-input" id="radio-more">
+                <input type="radio" name="project-type" data-context="type" checked value="all-and-more"
+                       class="form-radio-input" id="radio-more">
                 <label for="radio-more" class="label form-radio-label">Всё и даже больше</label>
               </div>
               <div class="form-radio-item">
-                <input type="radio" name="project-type" data-context="type" value="local" class="form-radio-input" id="radio-nothing">
+                <input type="radio" name="project-type" data-context="type" value="all-or-nothing"
+                       class="form-radio-input" id="radio-nothing">
                 <label for="radio-nothing" class="label form-radio-label">Всё или ничего</label>
               </div>
             </div>
-            <div class="form-radio-description" data-value="global">
+            <div class="form-radio-description" data-value="all-and-more">
               <p>Проект может собрать больше указанной суммы так как пользователи смогут финансировать ваш проект до
                 истечения срока сбора, даже если вы уже собрали необходимую сумму.</p>
               <p>Проект будет считаться состоявшимся в случае сбора 60% от заявленной суммы.</p>
             </div>
-            <div class="form-radio-description" data-value="local">
+            <div class="form-radio-description" data-value="all-or-nothing">
               <p>Время сбора не ограничено — собирайте столько времени, сколько нужно. Проект завершается в момент
                 достижения 100% суммы.</p>
             </div>
           </div>
           <div class="form-row-wrap">
             <div class="form-price form-row">
-              <input type="number" name="project-duration" class="form-input form-price-input numberonly required" id="create-project-days"
+              <input type="number" name="project-duration" class="form-input form-price-input numberonly required"
+                     id="create-project-days"
                      data-max-number="60">
               <label for="create-project-days" class="form-label">Дней сбора</label>
               <span class="form-price-desc">максимум 60 дней</span>
+              <div class="form-error form-error-empty">Заполните поле</div>
             </div>
             <div class="form-price form-row">
-              <input type="number" name="project-sum" class="form-input form-price-input numberonly required" id="create-project-sum">
+              <input type="number" name="project-sum" class="form-input form-price-input numberonly required"
+                     id="create-project-sum">
               <label for="create-project-sum" class="form-label">Сумма сбора</label>
               <div class="form-description">Valid feedback</div>
+              <div class="form-error form-error-empty">Заполните поле</div>
               <img src="images/Wallet_Extension.svg" class="form-price-desc form-price-desc_img">
             </div>
           </div>
@@ -207,11 +218,120 @@
       <div class="create-project__main">
         <div class="create-project__wrap">
           <h2>Добавьте вознаграждения</h2>
-          <div class="add">
-            <div class="create-project__form-block award">
+          <div class="create-project__form-block award">
+            <div class="award__filled">
+              <div class="award__filled-item could-be-editted">
+                <h3>Вознаграждение</h3>
+                <div class="form-row award__name">
+                  <input type="text" class="form-input form-input-countered focused" name="project-award-name-filled"
+                         id="create-project-award-filled" value="Пропуск в чебуречную" disabled>
+                  <label class="form-label" for="create-project-award-filled">Название вознаграждения</label>
+                  <div class="form-counter">
+                    <span class="current">0</span>/
+                    <span class="max">60</span>
+                  </div>
+                  <div class="form-error">Вы привысили макимально допустимое количество симоволов</div>
+                  <div class="form-description"></div>
+                </div>
+                <div class="form-row award__desc">
+                  <textarea type="text" class="form-input form-input-countered focused"
+                            name="project-award-description-filled" disabled
+                            id="create-project-award-desc-filled">Право получить один чебурек и чай</textarea>
+                  <label class="form-label" for="create-project-award-desc-filled">Описание вознаграждения</label>
+                  <div class="form-counter">
+                    <span class="current">0</span>/
+                    <span class="max">300</span>
+                  </div>
+                  <div class="form-error">Вы привысили макимально допустимое количество симоволов</div>
+                </div>
+                <div class="award__img">
+                  <h4>Изображение награды (не обязательно)</h4>
+                  <div class="form-row form-row-file">
+                    <input type="file"
+                           name="project-award-photo-filled"
+                           accept=".png, .jpg, .jpeg, .bmp"
+                           class="form-award-input"
+                           id="award-img-filled"
+                    >
+                    <div class="award__img-box">
+                      <div class="award__img-pic award__img-pic-filled">
+                        <img src="images/award-filled.png" alt="Пропуск в чебуречную">
+                      </div>
+                    </div>
+                    <div class="form-file-explain">
+                      <div class="form-file-desc">Прикрепить JPEG, PNG или BMP. Не более 5 МБ. Минимальное разрешение
+                        600×338 пикселей (16:9).
+                      </div>
+                      <label class="form-file-label" for="award-img-filled">
+                        <button class="button blue" disabled>Прикрепить</button>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="award__donation">
+                  <div class="form-price form-row">
+                    <input disabled type="number" value="1000" class="focused form-input form-price-input numberonly"
+                           id="award-sum-filled"
+                           name="project-award-sum-filled">
+                    <label for="award-sum-filled" class="form-label">Сумма пожертвования</label>
+                    <div class="form-description">Valid feedback</div>
+                    <img src="images/Wallet_Extension.svg" class="form-price-desc form-price-desc_img">
+                  </div>
+                </div>
+                <div class="award__delivery">
+                  <h3>Доставка</h3>
+                  <div class="form-row form-checkbox">
+                    <input disabled type="checkbox" class="form-checkbox-input" id="award-delivery-filled"
+                           name="project-award-delivery-filled">
+                    <label for="award-delivery-filled" class="form-checkbox-label label">Потребуется доставка</label>
+                  </div>
+                  <div class="open-if-delivery">
+                    <div class="checkbox-list">
+                      <div class="form-row form-check">
+                        <input disabled type="checkbox" class="form-check-input" id="award-address"
+                               name="project-delivery-address">
+                        <label for="award-address" class="form-check-label label">Запросить адрес доставки и контактные
+                          данные</label>
+                      </div>
+                      <div class="form-row form-check">
+                        <input disabled type="checkbox" class="form-check-input" id="award-pickup-filled"
+                               name="project-is-pickup">
+                        <label for="award-pickup-filled" class="form-check-label label">Доступен самовывоз</label>
+                      </div>
+                    </div>
+                    <div class="award__pickup">
+                      <h4>Самовывоз</h4>
+                      <div class="form-row">
+                        <input type="text" class="form-input" id="delivery-pickup-filled" disabled
+                               name="project-pickup-address">
+                        <label for="delivery-pickup-filled" class="form-label">Адрес и условия сомвывоза</label>
+                        <div class="description"><strong>Например:</strong> Россия, г. Москва, ул. Мира, д. 12, кв. 67.
+                          Забрать
+                          вознаграждение можно будет с 9:00 до 17:00"
+                        </div>
+                      </div>
+                    </div>
+                    <div class="award__phone">
+                      <div class="form-row">
+                        <input disabled type="text" class="form-input tel" id="delivery-phone-filled"
+                               name="project-delivery-phone-filled">
+                        <label for="delivery-phone-filled" class="form-label">Телефон</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="button-row create-project__form-buttons">
+                  <button class="delete">Удалить</button>
+                  <button class="edit">Редактировать</button>
+                  <button class="save button white">Сохранить</button>
+                </div>
+              </div>
+            </div>
+            <div class="award__new">
               <h3>Вознаграждение</h3>
               <div class="form-row award__name">
-                <input type="text" class="form-input form-input-countered" name="project-award-name" id="create-project-avard">
+                <input type="text" class="form-input form-input-countered" name="project-award-name"
+                       id="create-project-avard">
                 <label class="form-label" for="create-project-avard">Название вознаграждения</label>
                 <div class="form-counter">
                   <span class="current">0</span>/
@@ -226,7 +346,7 @@
                 <label class="form-label" for="create-project-award-desc">Описание вознаграждения</label>
                 <div class="form-counter">
                   <span class="current">0</span>/
-                  <span class="max">60</span>
+                  <span class="max">300</span>
                 </div>
                 <div class="form-error">Вы привысили макимально допустимое количество симоволов</div>
               </div>
@@ -235,7 +355,7 @@
                 <div class="form-row form-row-file">
                   <input type="file"
                          name="project-award-photo"
-                         accept=".png, .jpg, .jpeg"
+                         accept=".png, .jpg, .jpeg, .bmp"
                          class="form-award-input"
                          id="award-img"
                   >
@@ -252,7 +372,8 @@
               </div>
               <div class="award__donation">
                 <div class="form-price form-row">
-                  <input type="number" class="form-input form-price-input numberonly" id="award-sum" name="project-award-sum">
+                  <input type="number" class="form-input form-price-input numberonly" id="award-sum"
+                         name="project-award-sum">
                   <label for="award-sum" class="form-label">Сумма пожертвования</label>
                   <div class="form-description">Valid feedback</div>
                   <img src="images/Wallet_Extension.svg" class="form-price-desc form-price-desc_img">
@@ -267,8 +388,10 @@
                 <div class="open-if-delivery">
                   <div class="checkbox-list">
                     <div class="form-row form-check">
-                      <input type="checkbox" class="form-check-input" id="award-address" name="project-delivery-address">
-                      <label for="award-address" class="form-check-label label">Запросить адрес доставки и контактные
+                      <input type="checkbox" class="form-check-input" id="award-address-filled"
+                             name="project-delivery-address">
+                      <label for="award-address-filled" class="form-check-label label">Запросить адрес доставки и
+                        контактные
                         данные</label>
                     </div>
                     <div class="form-row form-check">
@@ -296,19 +419,13 @@
                 </div>
               </div>
               <div class="button-row create-project__form-buttons">
-                <button class="delete">
-                  <img src="images/delete.svg">
-                  Удалить
-                </button>
+                <button class="delete">Удалить</button>
                 <button class="button white">Сохранить</button>
               </div>
             </div>
           </div>
           <div class="award__add">
-            <div class="form-award add-award__form">
-
-              <div class="form-award-label">Добавить ещё вознаграждение</div>
-            </div>
+            <div class="form-award-label">Добавить ещё вознаграждение</div>
           </div>
           <div class="create-project__navigation">
             <a href="#" class="create-project__back step-prev step-event">
@@ -384,7 +501,7 @@
             <div class="form-row">
               <input type="text" class="form-input required" id="contacts-name" name="project-contacts-name">
               <label class="form-label" for="contacts-name">Имя, никнейм или название проекта</label>
-              <div class="form-error"></div>
+              <div class="form-error form-error-empty">Введите имя</div>
               <div class="form-description"></div>
             </div>
           </div>
@@ -415,7 +532,7 @@
             </div>
           </div>
           <div class="create-project__navigation">
-            <a href="#" class="create-project__back">
+            <a href="#" class="create-project__back step-event step-prev">
               <img src="images/Back.svg">
               <span>Назад</span>
             </a>
@@ -433,34 +550,47 @@
                 собранные на ваш проект.
               </div>
             </div>
-            <div class="form-row">
-              <input type="text" class="form-input required" id="auth-wallet" name="project-wallet-number">
-              <label class="form-label" for="auth-wallet">Номер кошелька</label>
-              <div class="form-error"></div>
-              <div class="form-description"></div>
+            <div class="wallet__wrap">
+              <img src="images/wallet.svg" class="wallet__img">
+              <div class="form-row">
+                <input type="text" class="form-input required" id="auth-wallet" name="project-wallet-number">
+                <label class="form-label" for="auth-wallet">Номер кошелька</label>
+                <div class="form-error form-error-empty">Введите номер кошелька</div>
+                <div class="form-description"></div>
+              </div>
+              </img>
             </div>
-          </div>
-          <div class="create-project__form-block auth">
-            <div class="create-project__form-text">
-              <h4>Авторизация</h4>
-              <div class="description">Выберите один из кошельков в качестве способа авторизации и&nbsp;доступа в личный кабинет.
+            <div class="create-project__form-block auth">
+              <div class="create-project__form-text">
+                <h4>Авторизация</h4>
+                <div class="description">Выберите один из кошельков в качестве способа авторизации и&nbsp;доступа в
+                  личный
+                  кабинет.
+                </div>
+              </div>
+              <div class="form-row form-wallet">
+                <!--              <input type="radio" class="form-wallet-input" name="auth-wallet-type" id="wallet-extension"-->
+                <!--                     value="Wallet Extension">-->
+                <!--              <label class="form-wallet-label extention" for="wallet-extension">Wallet Extension</label>-->
+                <input type="radio" class="form-wallet-input" name="auth-wallet-type" id="tonkeeper" value="Tonkeeper">
+                <label class="form-wallet-label tonkeeper" for="tonkeeper">Tonkeeper</label>
+                <!--              <input type="radio" class="form-wallet-input" name="auth-wallet-type" id="tonhub" value="Tonhub">-->
+                <!--              <label class="form-wallet-label tonhub" for="tonhub">Tonhub</label>-->
               </div>
             </div>
-            <div class="form-row form-wallet">
-              <input type="radio" class="form-wallet-input" name="auth-wallet-type" id="wallet-extension" value="Wallet Extension">
-              <label class="form-wallet-label extention" for="wallet-extension">Wallet Extension</label>
-              <input type="radio" class="form-wallet-input" name="auth-wallet-type" id="tonkeeper" value="Tonkeeper">
-              <label class="form-wallet-label tonkeeper" for="tonkeeper">Tonkeeper</label>
-              <input type="radio" class="form-wallet-input" name="auth-wallet-type" id="tonhub" value="Tonhub">
-              <label class="form-wallet-label tonhub" for="tonhub">Tonhub</label>
+            <div class="create-project__navigation">
+              <a href="#" class="create-project__back step-event step-prev">
+                <img src="images/Back.svg">
+                <span>Назад</span>
+              </a>
+              <button type="submit" class="create-project__next button white">Отправить проект</button>
+              <div class="error-box">
+                <div class="close"></div>
+                <h3>Кажется вы что-то пропустили</h3>
+                <p>Одно или несколько полей не заполнены или заполнены неверно. Пожалуйста, вернитесь назад и проверьте,
+                  что все поля заполнены верно.</p>
+              </div>
             </div>
-          </div>
-          <div class="create-project__navigation">
-            <a href="#" class="create-project__back">
-              <img src="images/Back.svg">
-              <span>Назад</span>
-            </a>
-            <button type="submit" class="create-project__next button white">Отправить проект</button>
           </div>
         </div>
       </div>

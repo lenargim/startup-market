@@ -104,6 +104,10 @@ a
 h1, h2, h3, h4, p, ul
   margin: 0
   padding: 0
+h1
+  font: 400 64px/88px $mainFont
+h2
+  font: 400 32px/44px $mainFont
 
 table
   width: 100%
@@ -185,6 +189,7 @@ svg
     background: #0F86C2
   &:disabled
     background: #C7CDD3
+    color: #fff
   &.white
     color: $blue
     background: transparent
@@ -194,3 +199,29 @@ svg
       color: #fff
 .bg-gray
   background: $gray
+
+.close
+  width: 16px
+  height: 16px
+  background: #D8D8D8
+  border-radius: 50%
+  position: absolute
+  right: -5px
+  top: -5px
+  cursor: pointer
+  display: none
+  &:hover
+    background: $blue
+    &::before, &::after
+      background: #fff
+  &::before, &::after
+    content: ''
+    height: 2px
+    width: 10px
+    background: #4C4C4C
+    position: absolute
+    transform-origin: center center
+  &:before
+    transform: translate(3px, 6.5px) rotate(45deg)
+  &:after
+    transform: translate(3px, 6.5px) rotate(-45deg)

@@ -18,7 +18,8 @@ $('select').each(function() {
 
   // Cache the styled div
   var $styledSelect = $this.next('div.styledSelect');
-  $( "<div class='select-label'>Категория</div>" ).insertAfter( $styledSelect );
+  const $selectLabel = $("<div class='select-label'>Категория</div>");
+  $styledSelect.after($selectLabel);
 
   // Show the first select option in the styled div
   //$styledSelect.text($this.children('option').eq(0).text());
@@ -40,6 +41,8 @@ $('select').each(function() {
   var $listItems = $list.children('li');
 
   // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+
+
   $styledSelect.click(function(e) {
     e.stopPropagation();
     $('div.styledSelect.active').each(function() {
@@ -56,6 +59,7 @@ $('select').each(function() {
     $this.val($(this).attr('rel'));
     $list.hide();
     $styledSelect.addClass('filled')
+    $styledSelect.parents('.form-row-select.error').removeClass('error')
   });
 
   // Hides the unordered list when clicking outside of it

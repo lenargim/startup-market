@@ -19,7 +19,7 @@
     &-block
       &.name
         margin-bottom: 84px
-      &.desc, &.label, &.location, &.wallet
+      &.desc, &.label, &.location, .wallet__wrap
         padding-bottom: 100px
         border-bottom: 1px solid #D2D2D2
         margin-bottom: 84px
@@ -33,18 +33,36 @@
         padding-bottom: 60px
         h3
           padding-bottom: 68px
-      .add
-        background: #fff
       &.contacts-data
         padding-top: 65px
     .form-row
       max-width: 545px
+      width: 100%
     &-text
       max-width: 545px
       &_wallet
         max-width: 635px
     &-buttons
       padding-top: 40px
+      .delete, .edit
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        color: #272727
+        font: 400 16px/24px $mainFont
+        gap: 15px
+        &::before
+          content: ''
+          width: 17px
+          height: 17px
+          flex-shrink: 0
+          background-repeat: no-repeat
+          background-size: contain
+          background-position: center center
+      .delete::before
+        background-image: url("../images/delete.svg")
+      .edit::before
+        background-image: url("../images/edit.svg")
   .description
     padding-bottom: 40px
     font: 400 16px/24px $mainFont
@@ -57,6 +75,7 @@
     display: flex
     align-items: center
     justify-content: space-between
+    position: relative
   &__back
     display: flex
     align-items: center
@@ -94,13 +113,6 @@
         background: $blue
         top: 6px
         right: calc(100% + 20px)
-  .add
-    background: #fff
-    border: 1px solid #CED4DA
-    border-radius: 9px
-    padding: 48px 40px 40px
-    width: calc(8/9*100%)
-    overflow: hidden
 .describe
   max-width: 781px
 .main-description
@@ -111,6 +123,35 @@
     &:not(:last-of-type)
       padding-bottom: 24px
 .award
+  .could-be-editted
+    .save
+      display: none
+    &.is-eddited
+      .save
+        display: block
+      .edit
+        display: none
+  &__filled
+    margin-bottom: 100px
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 30px
+    &-item
+      background: #fff
+      border: 1px solid #CED4DA
+      border-radius: 9px
+      padding: 48px 40px 40px
+      width: calc(8/9*100%)
+      overflow: hidden
+  &__new
+    background: #fff
+    border: 1px solid #CED4DA
+    border-radius: 9px
+    padding: 48px 40px 40px
+    width: calc(8/9*100%)
+    overflow: hidden
+    display: none
+    margin-bottom: 100px
   &__name
     padding-bottom: 40px
   &__desc
@@ -129,6 +170,9 @@
       height: 100px
       background: $gray
       border-radius: 4px
+      &-filled
+        width: 500px
+        height: 300px
       img
         width: 100%
         height: 100%
@@ -172,7 +216,6 @@
       .form-check
         max-width: 250px
   &__add
-    padding-top: 100px
     width: calc(8/9*100%)
   &__pickup
     padding-top: 60px
@@ -190,3 +233,44 @@
     display: none
     &.open
       display: block
+.wallet
+  &__wrap
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 46px
+  &__img
+    flex-shrink: 0
+    max-width: 60px
+    max-height: 60px
+
+.error-box
+  display: none
+  position: absolute
+  right: 0
+  bottom: calc(100% + 15px)
+  max-width: 470px
+  background: #fff
+  border-radius: 9px
+  padding: 24px 24px 32px
+  color: rgba(74,74,74,1)
+  font-size: 16px
+  font-weight: 400
+  line-height: 24px
+  border: 2px solid rgba(221,60,75, 1)
+  box-shadow: 0 19px 51px rgba(59,74,93, 0.464379), 0 6px 10px rgba(15,16,24, 0.253333)
+  &.active
+    display: block
+  h3
+    padding-bottom: 18px
+    color: $red
+  .close
+    display: block
+  &::after
+    content: ''
+    width: 38px
+    height: 33px
+    position: absolute
+    top: 24px
+    right: 24px
+    background: url("../images/error_icon.svg") center/contain no-repeat
