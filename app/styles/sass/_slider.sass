@@ -1,0 +1,19 @@
+.navigation
+  display: flex
+  align-items: center
+  gap: 30px
+  &__arrow
+    width: 36px
+    height: 36px
+    background: #000
+    border-radius: 50%
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    &:hover
+      background: $blue
+    svg
+      fill: #fff
+  &__prev
+    transform: rotate(180deg)

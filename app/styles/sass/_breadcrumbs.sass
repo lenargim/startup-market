@@ -1,0 +1,22 @@
+.breadcrumbs
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  gap: 58px
+  padding-bottom: 54px
+  &__link
+    color: #373737
+    &:not(:last-child)
+      position: relative
+      &::after
+        content: ''
+        position: absolute
+        top: 50%
+        transform: translateY(-50%) rotate(-45deg)
+        left: calc(100% + 27px)
+        width: 0
+        height: 0
+        padding: 2px
+        border: solid #AEAEAE
+        border-width: 0 1.5px 1.5px 0
+        display: inline-block

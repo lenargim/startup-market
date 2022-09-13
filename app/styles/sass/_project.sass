@@ -1,0 +1,71 @@
+.project
+  &__title
+    flex: 0 0 50%
+    font: 400 48px/65px $mainFont
+    &-wrap
+      display: flex
+      align-items: center
+      justify-content: space-between
+      gap: 30px
+      padding-bottom: 87px
+  &__desc
+    flex: 0 0 33%
+    color: #4A4A4A
+    font: 400 16px/24px $mainFont
+  &__data
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 30px
+    color: #272727
+    margin-bottom: 40px
+  &__author
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    flex: 0 0 25%
+    &-img
+      width: 36px
+      height: 36px
+      border-radius: 50%
+      margin-right: 21px
+    span
+      color: #4a4a4a
+    &-name
+      font: 400 16px/24px $mainFont
+      margin-left: 3px
+  &__tag, &__location
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 8px
+    &:before
+      content: ''
+      width: 16px
+      height: 16px
+      background-repeat: no-repeat
+      background-size: contain
+      background-position: center center
+    &.tech:before
+      background-image: url("../images/categories/tech.svg")
+    &.business:before
+      background-image: url("../images/categories/business.svg")
+    &.game:before
+      background-image: url("../images/categories/game.svg")
+    &.other:before
+      background-image: url("../images/categories/other.svg")
+    &.photo:before
+      background-image: url("../images/categories/photo.svg")
+    &.sport:before
+      background-image: url("../images/categories/sport.svg")
+    &.crypto:before
+      background-image: url("../images/categories/crypto.svg")
+  &__tag
+    flex: 0 0 120px
+  &__location
+    flex: 0 0 200px
+    white-space: nowrap
+    &:before
+      background-image: url("../images/map.svg")
+  &__navigation
+    margin-left: auto

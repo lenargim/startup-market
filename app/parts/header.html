@@ -1,22 +1,4 @@
-<!--#set var="title" value="Startup" -->
-<!--#set var="description" value="Startup description" -->
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <!-- <base href="/"> -->
-
-  <title><!--#echo var="title" --></title>
-  <meta name="description" content='<!--#echo var="description" -->'>
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <!--	<link rel="icon" href="images/favicon.png">-->
-  <link rel="stylesheet" href="css/app.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-</head>
+<!--#include virtual="/parts/head.html" -->
 <body>
 <div class="header-menu">
   <div class="container">
@@ -32,12 +14,19 @@
   <div class="container">
     <div class="header__wrap">
       <a href="/" class="header__logo img">
-        <img src="images/src/svg/logo.svg" alt='<!--#echo var="title" -->'>
+        <img src="images/logo.svg" alt='<!--#echo var="title" -->'>
       </a>
       <div class="header__rightside">
-        <a href="#" class="header__item">1</a>
-        <a href="" class="header__item">2</a>
-        <button class="button white"></button>
+        <div class="header__item-wrap">
+        <a href="#" class="header__item header__search"></a>
+        <a href="#" class="header__item header__wallet"></a>
+        </div>
+        <a href="create-project.html" class="header__button button white">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10,0 L10,5.999 L16,6 L16,10 L10,10 L10,16 L6,16 L6,10 L0,10 L0,6 L6,6 L6,0 L10,0 Z"></path>
+          </svg>
+          <span>Добавить проект</span>
+        </a>
       </div>
     </div>
   </div>

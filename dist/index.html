@@ -16,7 +16,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tiny.cloud/1/pgs15ji23holey3chzqpqsov5eplzfuynq1k739ktgtr7yz5/tinymce/5/tinymce.min.js"
+          referrerpolicy="origin"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 </head>
+
 <body>
 <div class="header-menu">
   <div class="container">
@@ -32,12 +36,19 @@
   <div class="container">
     <div class="header__wrap">
       <a href="/" class="header__logo img">
-        <img src="images/src/svg/logo.svg" alt='Startup'>
+        <img src="images/logo.svg" alt='Startup'>
       </a>
       <div class="header__rightside">
-        <a href="#" class="header__item">1</a>
-        <a href="" class="header__item">2</a>
-        <button class="button white"></button>
+        <div class="header__item-wrap">
+        <a href="#" class="header__item header__search"></a>
+        <a href="#" class="header__item header__wallet"></a>
+        </div>
+        <a href="create-project.html" class="header__button button white">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10,0 L10,5.999 L16,6 L16,10 L10,10 L10,16 L6,16 L6,10 L0,10 L0,6 L6,6 L6,0 L10,0 Z"></path>
+          </svg>
+          <span>Добавить проект</span>
+        </a>
       </div>
     </div>
   </div>
@@ -46,6 +57,9 @@
 <div>hello world</div>
 
 
+<!-- SLIDER -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<!-- END SLIDER -->
 <script src="js/app.min.js"></script>
 </body>
 </html>
