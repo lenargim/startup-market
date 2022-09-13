@@ -162,8 +162,10 @@ address
   background: transparent
 svg
   fill: transparent
-defs, path, g
+defs, g
   transition: all 0s ease
+nav a:hover
+  color: #07A0EC
 .nowrap
   white-space: nowrap
 .hidden
@@ -203,6 +205,24 @@ defs, path, g
     &:hover
       background: #0F86C2
       color: #fff
+  &.add
+    background: transparent
+    border-radius: 23px
+    padding: 13px 24px
+    border: 3px solid rgba(7,160,236, 1)
+    color: #07A0EC
+    font: 400 16px/20px $mainFont
+    svg
+      fill: #07A0EC
+      width: 16px
+      height: 16px
+      transition: all 0.2s ease
+    &:hover
+      background: #07A0EC
+      color: #fff
+      svg
+        fill: #fff
+
 .bg-gray
   background: $gray
 

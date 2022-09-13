@@ -69,3 +69,138 @@
       background-image: url("../images/map.svg")
   &__navigation
     margin-left: auto
+  &__slider
+    margin-bottom: 60px
+    overflow: hidden
+  &__slide
+    width: auto !important
+    &.swiper-slide-active
+      z-index: 10
+      .project__slide-img
+        box-shadow: 0 19px 51px rgba(59,74,93, 0.464379), 0 6px 10px rgba(15,16,24, 0.253333)
+        background-color: rgba(255,255,255, 1)
+    &-img
+      aspect-ratio: 897/506
+      height: 500px
+      border-radius: 10px
+      transform-origin: left center
+      overflow: hidden
+      img
+        display: block
+        width: 100%
+        height: 100%
+        object-fit: cover
+  &__info
+    border-radius: 16px
+    background-color: rgba(255,255,255, 1)
+    padding: 27px 27px 43px
+    display: flex
+    align-items: center
+    margin-bottom: 87px
+  &__collect
+    width: 520px
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-right: 116px
+    font: 400 22px/24px $mainFont
+    color: #8D8D8D
+    &::before, .after
+      content: ''
+      position: absolute
+      left: 0
+      bottom: -23px
+      height: 3px
+    &::before
+      right: 0
+      background-color: rgba(0,0,0, 0.1)
+    .after
+      background-color: $blue
+      width: 0
+      z-index: 2
+      transition: width 1s ease
+    .current
+      color: #000
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      gap: 16px
+      &::before
+        content: ''
+        width: 16px
+        height: 16px
+        background: url("../images/ton_symbol.svg") center no-repeat
+    .from
+      font: 400 18px/24px $mainFont
+  &__time
+    font: 400 22px/24px $mainFont
+  &__support
+    margin-left: auto
+    border-radius: 23px
+    font: 400 16px/20px $mainFont
+    svg
+      width: 16px
+      height: 16px
+      fill: #fff
+  &__mainpart
+    display: grid
+    grid-gap: 30px
+    grid-template-columns: 1fr 3fr
+  &__sidebar
+    padding-left: 60px
+    &-nav
+      display: flex
+      flex-direction: column
+      gap: 28px
+    &-link
+      color: #474747
+      font: 400 16px/24px $mainFont
+    &-li
+      position: relative
+      &.active
+        & .link
+          font-weight: 500
+        &::before
+          content: ''
+          width: 13px
+          height: 20px
+          position: absolute
+          background: url("../images/project_info.svg") center/contain no-repeat
+          left: -33px
+          top: 0
+      sup
+        font: 400 14px/22px $mainFont
+        display: inline-block
+        padding-left: 5px
+    &-info
+      margin-top: 380px
+    &-title
+      font: 500 18px/24px $mainFont
+      padding-bottom: 20px
+      position: relative
+      &::before
+        content: ''
+        position: absolute
+        width: 14px
+        height: 20px
+        background: url("../images/lock_money.svg") center center/contain no-repeat
+        left: -33px
+        top: 0
+    &-text
+      color: #4A4A4A
+  &__content
+    width: 780px
+    margin: 0 auto
+    h2
+      padding-bottom: 40px
+      font-weight: 500
+      &:not(:first-child)
+        margin-top: 100px
+    p
+      font: 400 16px/28px $mainFont
+      &:not(:last-of-type)
+        padding-bottom: 1em
+    img, picture, video
+      width: 100%
+      margin: 60px 0

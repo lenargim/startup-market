@@ -1,0 +1,71 @@
+.footer
+  padding: 76px 0 56px
+  background: #fff
+  border-top: 0.5px solid rgba(151,151,151, 0.667287)
+  &__wrap
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-gap: 30px
+    margin-bottom: 50px
+  &__col
+    &-title
+      color: rgba(10,16,22,1)
+      font: 500 18px/26px $mainFont
+      letter-spacing: -0.56px
+  &__nav
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-gap: 25px 35px
+    margin-top: 34px
+  &__link
+    color: rgba(55,55,55,1)
+    white-space: nowrap
+  &__row
+    padding-top: 50px
+    border-top: 2px solid #858585
+    display: flex
+    align-items: center
+    justify-content: space-between
+    font: 400 14px/22px $mainFont
+    color: #4A4A4A
+  &__copy, &__dev
+    display: flex
+    align-items: center
+    gap: 16px
+    &::before
+      content: ''
+      width: 38px
+      height: 38px
+  &__copy
+    justify-content: flex-start
+    &:before
+      background: url("../images/copy.svg") center center/contain no-repeat
+  &__dev
+    justify-content: flex-end
+    &::before
+      background: url("../images/ton-dev.svg") center center/contain no-repeat
+  &__right
+    max-width: 275px
+    margin-left: auto
+    .description
+      margin-top: 26px
+    .socials
+      display: flex
+      align-items: center
+      justify-content: space-between
+      &__link
+        width: 40px
+        height: 40px
+        svg
+          transition: all 0.2s ease
+          path
+            fill: #36596A
+      .instagram:hover svg path
+        fill: url(#inst)
+      .telegram:hover path
+        fill: url(#tg)
+      .twitter:hover path
+        fill: url(#twitter)
+      .youtube:hover path
+        fill: #FF2500

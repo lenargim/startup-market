@@ -26,21 +26,6 @@
     align-items: center
     justify-content: flex-end
     gap: 92px
-  &__button.white
-    position: relative
-    border-radius: 23px
-    border: 3px solid rgba(7,160,236, 1)
-    padding: 13px 24px
-    color: rgba(7,160,236,1)
-    font: 400 16px/20px $mainFont
-    svg
-      width: 16px
-      height: 16px
-      fill: $blue
-    &:hover
-      border-color: #0f86c2
-      svg
-        fill: #fff
   &__item
     display: flex
     align-items: center
@@ -49,15 +34,23 @@
     border: 3px solid rgba(7,160,236, 1)
     width: 46px
     height: 46px
+    &:hover
+      background: #07A0EC
+      svg
+        fill: #fff
+    svg
+      width: 18px
+      height: 18px
+      fill: $blue
     &-wrap
       display: flex
       align-items: center
       justify-content: flex-end
       gap: 40px
   &__search
-    background: url("../images/search.svg") center/contain no-repeat
+    //background: url("../images/search.svg") center/contain no-repeat
   &__wallet
-    background: url("../images/account_wallet.svg") center/contain no-repeat
+    //background: url("../images/account_wallet.svg") center/contain no-repeat
 
 .header-create-project
   &__logo
