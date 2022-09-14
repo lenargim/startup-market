@@ -158,17 +158,27 @@
       font: 400 16px/24px $mainFont
     &-li
       position: relative
+      &::before
+        width: 13px
+        height: 20px
+        position: absolute
+        left: -33px
+        top: 0
+      &.info:before
+        background: url("../images/project/project_info.svg") center/contain no-repeat
+      &.roadmap:before
+        background: url("../images/project/roadmap.svg") center/contain no-repeat
+      &.news:before
+        background: url("../images/project/comment.svg") center/contain no-repeat
+      &.community:before
+        background: url("../images/project/roadmap.svg") center/contain no-repeat
+      &.award:before
+        background: url("../images/project/reward.svg") center/contain no-repeat
       &.active
+        &:before
+          content: ''
         & .link
           font-weight: 500
-        &::before
-          content: ''
-          width: 13px
-          height: 20px
-          position: absolute
-          background: url("../images/project_info.svg") center/contain no-repeat
-          left: -33px
-          top: 0
       sup
         font: 400 14px/22px $mainFont
         display: inline-block
@@ -204,3 +214,103 @@
     img, picture, video
       width: 100%
       margin: 60px 0
+.project-award
+  border-radius: 9px
+  border: 2px solid rgba(173,225,251, 1)
+  padding: 22px 22px 62px
+  display: flex
+  gap: 60px
+  margin-bottom: 80px
+  &::before
+    content: ''
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    border: 11px solid rgba(7,160,236, 1)
+    flex-shrink: 0
+    box-sizing: border-box
+  h4
+    font-weight: 500
+    padding-bottom: 12px
+  .desc
+    color: #4A4A4A
+    padding-bottom: 50px
+  &__form
+    &-row
+      display: flex
+      align-items: center
+      justify-content: flex-start
+    &-label
+      width: 23px
+      height: 23px
+      margin-right: 21px
+      svg
+        fill: rgba(7,160,236, 1)
+    &-input
+      background: transparent
+      opacity: 1
+      font: 400 32px/1 $mainFont
+      color: rgba(0,0,0,1)
+      position: relative
+      padding: 13px 0
+      width: 260px
+      border-bottom: 1px solid rgba(82,82,82, 1)
+      margin-right: 40px
+.project-info
+  padding: 22px 22px 50px
+  background: #fff
+  border-radius: 9px
+  display: flex
+  gap: 60px
+  position: relative
+  &::before
+    content: ''
+    border: 2px solid rgba(132,132,132, 1)
+    width: 36px
+    height: 36px
+    flex-shrink: 0
+    border-radius: 50%
+    box-sizing: border-box
+  h4
+    font-weight: 500
+    padding-bottom: 13px
+  .description p
+    color: #4A4A4A
+    font: 400 14px/22px $mainFont
+    &:not(:last-child)
+      padding-bottom: 1em
+  &__text
+    width: 430px
+  &__table
+    margin-top: 40px
+    width: 100%
+    td
+      white-space: nowrap
+      color: #4A4A4A
+      font: 400 16px/28px $mainFont
+  &__row
+    margin-top: 87px
+    display: flex
+    align-items: center
+  &__currency
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 20px
+    font: 400 32px/1 $mainFont
+    margin-right: 100px
+    svg
+      fill: $blue
+      width: 23px
+      height: 23px
+  &__support
+    color: #4A4A4A
+    font: 400 16px/28px $mainFont
+  &__img
+    position: absolute
+    right: 40px
+    top: 65px
+    width: 154px
+    height: 100px
+    background: url("../images/image.svg") center/cover no-repeat
+    border-radius: 4px
