@@ -48,6 +48,10 @@ button
   padding: 0 40px
   margin: 0 auto
   max-width: 1445px
+  @include between(1024, 1366)
+    padding: 0 52px
+  @include max(767)
+    padding: 0 20px
 
 input
   margin: 0
@@ -195,7 +199,7 @@ nav a:hover
   transition: all 0.3s ease
   &:hover
     background: #0F86C2
-  &:disabled
+  &:disabled, &[disabled]
     background: #C7CDD3
     color: #fff
   &.white

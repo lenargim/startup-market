@@ -233,8 +233,8 @@ $(document).ready(function () {
       parent.find('.open-if-delivery').addClass('open');
       parent.find('input[type=text]').addClass('required');
     } else {
-      parent.find('.open-if-delivery').addClass('open');
-      parent.find('input[type=text]').addClass('required');
+      parent.find('.open-if-delivery').removeClass('open');
+      parent.find('input[type=text]').removeClass('required');
     }
   });
 
@@ -303,6 +303,10 @@ $(document).ready(function () {
       const data = $(this).serializeArray();
       window.location.href = "./thankyou.html";
     }
+  })
+
+  $('#award-img-filled').on('change, input', function () {
+    console.log('ddd')
   })
 });
 

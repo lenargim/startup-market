@@ -53,6 +53,8 @@
     color: $red
     position: absolute
     top: calc(100% + 10px)
+    @include max(767)
+      width: 225px
   &-counter
     position: absolute
     left: calc(100% + 30px)
@@ -66,8 +68,19 @@
     justify-content: center
     background-color: rgba(216,216,216, 1)
     transition-duration: 0s
+    @include between(768, 1024)
+      left: calc(100% + 20px)
+      padding: 5px 10px
+    @include max(767)
+      left: unset
+      right: 0
+      top: calc(100% + 10px)
     span
       transition-duration: 0s
+    &-photo
+      @include max(767)
+        top: unset
+        bottom: 100px
 .form-file
   position: absolute
   z-index: -1
@@ -80,11 +93,13 @@
     padding: 30px 21px
     border-radius: 4px
     border: 1px dashed rgba(151,151,151, 1)
+    @include max(767)
+      flex-wrap: wrap
+      grid-gap: 20px
     & > div:first-child
       filter: none
     & > div.uploaded, div.uploaded + div
       filter: none
-
   &-img
     width: 116px
     height: 65px
@@ -93,6 +108,9 @@
     background: url("../images/image.svg") center center/cover no-repeat
     order: 1
     filter: opacity(0.35)
+    @include max(767)
+      width: unset
+      flex: 0 1 calc(50% - 10px)
     img
       width: 100%
       height: 100%
@@ -108,13 +126,27 @@
     justify-content: space-between
     gap: 1em
     color: #4A4A4A
+    @include max(767)
+      flex-direction: column
   &-desc
     width: 275px
     font: 400 16px/24px $mainFont
+    @include between(768, 1024)
+      font: 400 14px/22px $mainFont
+    @include max(767)
+      width: 220px
+  &-label
+    @include max(767)
+      width: 100%
+      button
+        width: 100%
 .form-radio
   display: flex
   align-items: flex-start
   gap: 40px
+  @include max(767)
+    flex-direction: column
+    gap: 24px
   &_border
     border-bottom: 1px solid #000
     padding-bottom: 20px
@@ -135,6 +167,9 @@
     justify-content: flex-start
     gap: 16px
     cursor: pointer
+    white-space: nowrap
+    @include max(767)
+      white-space: unset
     &::before
       content: ''
       box-sizing: border-box
@@ -158,8 +193,17 @@
   gap: 40px
   &-input
     width: fit-content
+    @include max(767)
+      width: 200px
   &-desc
     color: #4A4A4A
+.form-days
+  @include max(767)
+    flex-direction: column
+    align-items: flex-start
+    gap: 10px
+    &-input
+      width: 100%
 .form-checkbox
   &-input
     position: absolute
@@ -200,6 +244,9 @@
   justify-content: flex-end
   align-items: center
   gap: 40px
+  @include max(767)
+    justify-content: center
+    gap: 30px
   .delete
     display: flex
     align-items: center
@@ -221,6 +268,8 @@
     align-items: center
     justify-content: center
     cursor: pointer
+    @include max(767)
+      padding: 22px
     &:hover
       border-color: rgba(15,134,194, 1)
       color: rgba(15,134,194, 1)

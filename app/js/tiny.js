@@ -3,7 +3,6 @@ tinymce.init({
   plugins: 'image code',
   file_picker_types: 'image',
   toolbar: [
-    {name: 'history', items: ['undo', 'redo']},
     {name: 'styles', items: ['styles']},
     {name: 'formatting', items: ['bold', 'italic']},
     {name: 'alignment', items: ['alignleft', 'aligncenter', 'alignright', 'alignjustify']},
@@ -42,5 +41,8 @@ tinymce.init({
 
     input.click();
   },
-  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
+  mobile: {
+    height: "300",
+  }
 });

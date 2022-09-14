@@ -47,16 +47,23 @@
       align-items: center
       justify-content: flex-end
       gap: 40px
-  &__search
-    //background: url("../images/search.svg") center/contain no-repeat
-  &__wallet
-    //background: url("../images/account_wallet.svg") center/contain no-repeat
 
 .header-create-project
+  @include max(767)
+    background: #fff
+    box-shadow: 0px 19px 51px rgba(59,74,93, 0.205392), 0px 6px 10px rgba(15,16,24, 0.144531)
+  .container
+    @include between(768, 1024)
+      padding: 0 15px
   &__logo
     width: 354px
     margin: 51px auto 0
     display: block
+    img
+      width: 100%
+    @include max(767)
+      width: 200px
+      margin: 30px auto 0
   &__menu
     display: flex
     align-items: center
@@ -67,13 +74,36 @@
     padding: 0 40px
     border-radius: 16px
     box-shadow: 0 19px 51px rgba(59,74,93, 0.205392), 0 6px 10px rgba(15,16,24, 0.144531)
+    @include between(1024, 1366)
+      gap: 74px
+    @include between(768, 1024)
+      gap: 35px
+      padding: 0 25px
+    @include max(767)
+      box-shadow: none
+      border-radius: 0
+      margin-top: 45px
+      gap: 35px
+      padding: 0 20px
+      position: relative
+      left: -20px
+      right: -20px
+      width: calc(100% + 40px)
+      overflow-x: auto
+      -ms-overflow-style: none
+      scrollbar-width: none
+      &::-webkit-scrollbar
+        display: none
     &-link
       color: rgba(74,74,74,1)
       font: 400 16px/24px $mainFont
+      white-space: nowrap
     li
       padding: 40px 0
       height: 100%
       position: relative
+      @include max(767)
+        padding: 0 0 30px
       &.active::before
         position: absolute
         content: ''
@@ -82,6 +112,9 @@
         left: 0
         right: 0
         bottom: 0
+      &.active
+        button
+          font-weight: 500
       &.error
         button
           position: relative
