@@ -15,5 +15,93 @@
       background: $blue
     svg
       fill: #fff
+      width: 18px
+      height: 18px
   &__prev
     transform: rotate(180deg)
+.slide
+  width: 66% !important
+  &.swiper-slide-active
+    z-index: 10
+    .project__slide-img
+      box-shadow: 0 19px 51px rgba(59,74,93, 0.464379), 0 6px 10px rgba(15,16,24, 0.253333)
+      background-color: rgba(255,255,255, 1)
+  &__img
+    aspect-ratio: 897/506
+    //height: 500px
+    border-radius: 10px
+    transform-origin: left center
+    overflow: hidden
+    img
+      display: block
+      width: 100%
+      height: 100%
+      object-fit: cover
+  &__desc
+    margin-top: 32px
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    gap: 40px
+  &__text
+    flex: 0 0 50%
+    font: 400 16px/24px $mainFont
+    color: #4A4A4A
+    .by
+      font: 400 14px/22px $mainFont
+    p:not(:last-child)
+      padding-bottom: 1em
+  &__title
+    padding-bottom: 22px
+    font-weight: 500
+  &__days
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 4px
+    white-space: nowrap
+    svg
+      width: 18px
+      height: 18px
+      flex-shrink: 0
+      fill: #878787
+  &__donation
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 17px
+    color: #8D8D8D
+    padding-bottom: 20px
+    flex: 0 0 35%
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      right: 0
+      height: 3px
+      background: #000
+      bottom: 0
+    .after
+      position: absolute
+      left: 0
+      bottom: 0
+      height: 2px
+      background: $blue
+      width: 0
+      z-index: 1
+      display: none
+    .current
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      gap: 10px
+      font: 500 16px/24px $mainFont
+      color: #000
+    .max
+      font: 400 16px/24px $mainFont
+    svg
+      width: 16px
+      height: 16px
+      flex-shrink: 0
+      fill: #878787

@@ -126,14 +126,14 @@
         position: absolute
         left: 0
         right: 0
-        height: 2px
+        height: 3px
         background: #000
         bottom: 0
       .after
         position: absolute
         left: 0
         bottom: 0
-        height: 2px
+        height: 3px
         background: $blue
         width: 0
         z-index: 1
@@ -152,3 +152,15 @@
       align-items: center
       gap: 17px
       font: 500 16px/24px $mainFont
+  &__new
+    margin-top: 44px
+    &-title
+      display: flex
+      align-items: center
+      h2
+        flex: 0 0 66.6%
+      a
+        color: $blue
+        font: 400 16px/24px $mainFont
+  &__slider
+    margin-top: 60px
