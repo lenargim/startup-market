@@ -1,10 +1,12 @@
 $(document).ready(function () {
-  const current = Number($('.project__collect .current').text());
-  const max = Number($('.project__collect .max').text());
-  const filled = current / max * 100;
-  $('.project__collect .after').css('width', `${filled}%`);
-  const currentFormatted = new Intl.NumberFormat('ru-RU').format(current);
-  const maxFormatted = new Intl.NumberFormat('ru-RU').format(current);
-  $('.project__collect .current').text(currentFormatted);
-  $('.project__collect .max').text(maxFormatted);
+  $('.get-donation').each(function () {
+    const current = Number($(this).find('.current span').text());
+    const max = Number($(this).find('.max').text());
+    const filled = current / max * 100;
+    $(this).find('.after').css('width', `${filled}%`);
+    const currentFormatted = new Intl.NumberFormat('ru-RU').format(current);
+    const maxFormatted = new Intl.NumberFormat('ru-RU').format(max);
+    $(this).find('.current span').text(currentFormatted);
+    $(this).find('.max').text(maxFormatted);
+  })
 });

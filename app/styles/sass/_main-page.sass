@@ -1,0 +1,154 @@
+.main-page
+  padding-bottom: 230px
+  .banner
+    height: calc(100vh - 100px)
+  &__title
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 30px
+    padding: 100px 0
+    h1
+      max-width: calc(7/12*100%)
+    .description
+      display: flex
+      flex-direction: column
+      gap: 30px
+      font: 500 22px/32px $mainFont
+      flex: 0 0 311px
+      a
+        color: rgba(7,160,236,1)
+        font: 400 16px/24px $mainFont
+  &__categories
+    margin-top: 175px
+    h2
+      padding-bottom: 105px
+    &-wrap
+      display: grid
+      grid-template-columns: repeat(4, 1fr)
+      grid-gap: 60px 10%
+    &-item
+      font: 500 18px/24px $mainFont
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      gap: 30px
+      white-space: nowrap
+      svg
+        fill: $blue
+        width: 50px
+        height: 50px
+  &__popular
+    padding-top: 236px
+    &-title
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding-bottom: 60px
+      a
+        color: $blue
+        font: 400 16px/24px $mainFont
+    &-wrap
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      grid-gap: 100px 40px
+    &-item
+      display: flex
+      flex-direction: column
+      justify-content: stretch
+      border-radius: 9px
+      background: $gray
+      position: relative
+      &:hover
+        .main-page__popular-img
+          box-shadow: 0 19px 51px rgba(59,74,93, 0.464379), 0 6px 10px rgba(15,16,24, 0.253333)
+          &:before
+            transform: translate(-50%, -50%)
+        svg
+          fill: $blue
+        .after
+          display: block
+    &-img
+      border-radius: 9px
+      margin-bottom: 30px
+      z-index: 1
+      position: relative
+      &::before
+        content: ''
+        position: absolute
+        border: 12px solid rgba(7,160,236, 1)
+        width: 292px
+        height: 292px
+        border-radius: 50%
+        transform-origin: center center
+        box-sizing: border-box
+        z-index: 0
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%) scale(0.5)
+        transition: all 0.3s ease
+      img
+        position: relative
+        z-index: 1
+        display: block
+        width: 100%
+        height: 100%
+        object-fit: cover
+        border-radius: 9px
+    &-name
+      font: 500 18px/24px $mainFont
+      margin-bottom: 20px
+    &-desc, &-author
+      color: #4A4A4A
+      font: 400 14px/22px $mainFont
+      margin-bottom: 15px
+    &-row
+      display: flex
+      align-items: flex-start
+      justify-content: flex-start
+      margin-top: auto
+      padding-top: 45px
+      gap: 60px
+      svg
+        width: 18px
+        height: 18px
+        fill: #878787
+    &-donation
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      gap: 17px
+      color: #8D8D8D
+      padding-bottom: 20px
+      &::before
+        content: ''
+        position: absolute
+        left: 0
+        right: 0
+        height: 2px
+        background: #000
+        bottom: 0
+      .after
+        position: absolute
+        left: 0
+        bottom: 0
+        height: 2px
+        background: $blue
+        width: 0
+        z-index: 1
+        display: none
+      .current
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        gap: 10px
+        font: 500 16px/24px $mainFont
+        color: #000
+      .max
+        font: 400 16px/24px $mainFont
+    &-time
+      display: flex
+      align-items: center
+      gap: 17px
+      font: 500 16px/24px $mainFont

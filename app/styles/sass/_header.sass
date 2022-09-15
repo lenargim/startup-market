@@ -1,31 +1,30 @@
 .header
-  border: 0.5px solid rgba(151,151,151, 0.66)
-  &-menu
-    background: $dark
-    padding: 14px 0
-    &__nav
-      display: flex
-      align-items: center
-      gap: 46px
-      .nft
-        margin-left: 48px
-      &-link
-        color: #fff
-        font: 400 16px/24px $mainFont
+  border-bottom: 0.5px solid rgba(151,151,151, 0.66)
   &__wrap
     display: flex
     align-items: center
     justify-content: space-between
     padding: 25px 0
+    gap: 30px
+  &__part
+    flex: 0 0 25%
   &__logo
     max-width: 206px
     aspect-ratio: 206/46
+  &__nav
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 45px
+  &__link
+    white-space: nowrap
+    font: 400 16px/25px $mainFont
   &__rightside
     width: 25%
     display: flex
     align-items: center
     justify-content: flex-end
-    gap: 92px
+    gap: 60px
   &__item
     display: flex
     align-items: center
