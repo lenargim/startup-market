@@ -10,7 +10,8 @@
 	],
 	"license": "ISC",
 	"scripts": {
-		"start": "gulp"
+		"start": "gulp",
+		"deploy": "gh-pages -d dist"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.18.10",
