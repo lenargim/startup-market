@@ -192,8 +192,8 @@
             </div>
           </div>
           <div class="form-row-wrap">
-            <div class="form-price form-row">
-              <input type="number" name="project-duration" class="form-input form-price-input numberonly required"
+            <div class="form-price form-days form-row">
+              <input type="number" name="project-duration" class="form-input form-price-input form-days-input numberonly required"
                      id="create-project-days"
                      data-max-number="60">
               <label for="create-project-days" class="form-label">Дней сбора</label>
@@ -209,13 +209,16 @@
               <img src="images/Wallet_Extension.svg" class="form-price-desc form-price-desc_img">
             </div>
           </div>
-          <div class="create-project__navigation">
-            <a href="#" class="create-project__back">
-              <img src="images/Back.svg">
-              <span>Назад</span>
-            </a>
-            <a href="#" class="create-project__next button white step-next step-event">Далее</a>
-          </div>
+        </div>
+        <div class="create-project__sidebar"></div>
+        <div class="create-project__navigation">
+          <a href="#" class="create-project__back">
+            <svg viewBox="0 0 36 22" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.5606602,0.439339828 C12.109835,0.988514613 12.1441584,1.85757702 11.6636304,2.44673776 L11.5606602,2.56066017 L5.12,9 L34.5065848,9 C35.3313753,9 36,9.67157288 36,10.5 C36,11.2796961 35.4077234,11.9204487 34.6504107,11.9931334 L34.5065848,12 L5.12,12 L11.5606602,18.4393398 C12.109835,18.9885146 12.1441584,19.857577 11.6636304,20.4467378 L11.5606602,20.5606602 C11.0114854,21.109835 10.142423,21.1441584 9.55326224,20.6636304 L9.43933983,20.5606602 L0.439339828,11.5606602 C-0.109834957,11.0114854 -0.144158381,10.142423 0.336369556,9.55326224 L0.439339828,9.43933983 L9.43933983,0.439339828 C10.0251263,-0.146446609 10.9748737,-0.146446609 11.5606602,0.439339828 Z"></path>
+            </svg>
+            <span>Назад</span>
+          </a>
+          <a href="#" class="create-project__next button white step-next step-event">Далее</a>
         </div>
       </div>
       <div class="create-project__main">
@@ -229,13 +232,6 @@
               <p>Допустимые форматы изображений: JPEG, PNG, BMP или GIF. Максимальный размер одного файла 5 МБ.</p>
             </div>
             <textarea id="mytextarea" name="project-custom-description"></textarea>
-          </div>
-          <div class="create-project__navigation">
-            <a href="#" class="create-project__back step-prev step-event">
-              <img src="images/Back.svg">
-              <span>Назад</span>
-            </a>
-            <a href="#" class="create-project__next button white step-next step-event">Далее</a>
           </div>
         </div>
         <div class="create-project__sidebar">
@@ -252,8 +248,17 @@
             </li>
           </ul>
         </div>
+        <div class="create-project__navigation">
+          <a href="#" class="create-project__back step-prev step-event">
+            <svg viewBox="0 0 36 22" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.5606602,0.439339828 C12.109835,0.988514613 12.1441584,1.85757702 11.6636304,2.44673776 L11.5606602,2.56066017 L5.12,9 L34.5065848,9 C35.3313753,9 36,9.67157288 36,10.5 C36,11.2796961 35.4077234,11.9204487 34.6504107,11.9931334 L34.5065848,12 L5.12,12 L11.5606602,18.4393398 C12.109835,18.9885146 12.1441584,19.857577 11.6636304,20.4467378 L11.5606602,20.5606602 C11.0114854,21.109835 10.142423,21.1441584 9.55326224,20.6636304 L9.43933983,20.5606602 L0.439339828,11.5606602 C-0.109834957,11.0114854 -0.144158381,10.142423 0.336369556,9.55326224 L0.439339828,9.43933983 L9.43933983,0.439339828 C10.0251263,-0.146446609 10.9748737,-0.146446609 11.5606602,0.439339828 Z"></path>
+            </svg>
+            <span>Назад</span>
+          </a>
+          <a href="#" class="create-project__next button white step-next step-event">Далее</a>
+        </div>
       </div>
-      <div class="create-project__main">
+      <div class="create-project__main award-block">
         <div class="create-project__wrap">
           <h2>Добавьте вознаграждения</h2>
           <div class="create-project__form-block award">
@@ -283,7 +288,7 @@
                   <div class="form-error">Вы привысили макимально допустимое количество симоволов</div>
                 </div>
                 <div class="award__img">
-                  <h4>Изображение награды (не обязательно)</h4>
+                  <h4>Изображение награды (не&nbsp;обязательно)</h4>
                   <div class="form-row form-row-file">
                     <input type="file"
                            name="project-award-photo-filled"
@@ -328,7 +333,8 @@
                       <div class="form-row form-check">
                         <input disabled type="checkbox" class="form-check-input" id="award-address-filled"
                                name="project-delivery-address-filled">
-                        <label for="award-address-filled" class="form-check-label label">Запросить адрес доставки и контактные
+                        <label for="award-address-filled" class="form-check-label label">Запросить адрес доставки и
+                          контактные
                           данные</label>
                       </div>
                       <div class="form-row form-check">
@@ -465,33 +471,6 @@
           <div class="award__add">
             <div class="form-award-label">Добавить ещё вознаграждение</div>
           </div>
-          <div class="create-project__navigation">
-            <a href="#" class="create-project__back step-prev step-event">
-              <svg class="arrow-svg">
-                <defs>
-                  <clipPath id="i0">
-                    <path d="M1920,0 L1920,1333 L0,1333 L0,0 L1920,0 Z"></path>
-                  </clipPath>
-                  <clipPath id="i1">
-                    <path d="M11.5606602,0.439339828 C12.109835,0.988514613 12.1441584,1.85757702 11.6636304,2.44673776 L11.5606602,2.56066017 L5.12,9 L34.5065848,9 C35.3313753,9 36,9.67157288 36,10.5 C36,11.2796961 35.4077234,11.9204487 34.6504107,11.9931334 L34.5065848,12 L5.12,12 L11.5606602,18.4393398 C12.109835,18.9885146 12.1441584,19.857577 11.6636304,20.4467378 L11.5606602,20.5606602 C11.0114854,21.109835 10.142423,21.1441584 9.55326224,20.6636304 L9.43933983,20.5606602 L0.439339828,11.5606602 C-0.109834957,11.0114854 -0.144158381,10.142423 0.336369556,9.55326224 L0.439339828,9.43933983 L9.43933983,0.439339828 C10.0251263,-0.146446609 10.9748737,-0.146446609 11.5606602,0.439339828 Z"></path>
-                  </clipPath>
-                </defs>
-                <g transform="translate(-268.0 -1186.0)">
-                  <g clip-path="url(#i0)">
-                    <g transform="translate(268.0 1186.5)">
-                      <g clip-path="url(#i1)">
-                        <polygon
-                                points="4.21884749e-15,5.68434189e-14 36,5.68434189e-14 36,21 4.21884749e-15,21 4.21884749e-15,5.68434189e-14"
-                                stroke="none"></polygon>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-              <span>Назад</span>
-            </a>
-            <a href="#" class="create-project__next button white step-next step-event">Далее</a>
-          </div>
         </div>
         <div class="create-project__sidebar">
           <h3>Рекомендации</h3>
@@ -525,6 +504,33 @@
               других стран.
             </li>
           </ul>
+        </div>
+        <div class="create-project__navigation">
+          <a href="#" class="create-project__back step-prev step-event">
+            <svg class="arrow-svg">
+              <defs>
+                <clipPath id="i0">
+                  <path d="M1920,0 L1920,1333 L0,1333 L0,0 L1920,0 Z"></path>
+                </clipPath>
+                <clipPath id="i1">
+                  <path d="M11.5606602,0.439339828 C12.109835,0.988514613 12.1441584,1.85757702 11.6636304,2.44673776 L11.5606602,2.56066017 L5.12,9 L34.5065848,9 C35.3313753,9 36,9.67157288 36,10.5 C36,11.2796961 35.4077234,11.9204487 34.6504107,11.9931334 L34.5065848,12 L5.12,12 L11.5606602,18.4393398 C12.109835,18.9885146 12.1441584,19.857577 11.6636304,20.4467378 L11.5606602,20.5606602 C11.0114854,21.109835 10.142423,21.1441584 9.55326224,20.6636304 L9.43933983,20.5606602 L0.439339828,11.5606602 C-0.109834957,11.0114854 -0.144158381,10.142423 0.336369556,9.55326224 L0.439339828,9.43933983 L9.43933983,0.439339828 C10.0251263,-0.146446609 10.9748737,-0.146446609 11.5606602,0.439339828 Z"></path>
+                </clipPath>
+              </defs>
+              <g transform="translate(-268.0 -1186.0)">
+                <g clip-path="url(#i0)">
+                  <g transform="translate(268.0 1186.5)">
+                    <g clip-path="url(#i1)">
+                      <polygon
+                              points="4.21884749e-15,5.68434189e-14 36,5.68434189e-14 36,21 4.21884749e-15,21 4.21884749e-15,5.68434189e-14"
+                              stroke="none"></polygon>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <span>Назад</span>
+          </a>
+          <a href="#" class="create-project__next button white step-next step-event">Далее</a>
         </div>
       </div>
       <div class="create-project__main">
@@ -569,16 +575,19 @@
               </div>
             </div>
           </div>
-          <div class="create-project__navigation">
-            <a href="#" class="create-project__back step-event step-prev">
-              <img src="images/Back.svg">
-              <span>Назад</span>
-            </a>
-            <a href="#" class="create-project__next button white step-next step-event">Далее</a>
-          </div>
+        </div>
+        <div class="create-project__sidebar"></div>
+        <div class="create-project__navigation">
+          <a href="#" class="create-project__back step-event step-prev">
+            <svg viewBox="0 0 36 22" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.5606602,0.439339828 C12.109835,0.988514613 12.1441584,1.85757702 11.6636304,2.44673776 L11.5606602,2.56066017 L5.12,9 L34.5065848,9 C35.3313753,9 36,9.67157288 36,10.5 C36,11.2796961 35.4077234,11.9204487 34.6504107,11.9931334 L34.5065848,12 L5.12,12 L11.5606602,18.4393398 C12.109835,18.9885146 12.1441584,19.857577 11.6636304,20.4467378 L11.5606602,20.5606602 C11.0114854,21.109835 10.142423,21.1441584 9.55326224,20.6636304 L9.43933983,20.5606602 L0.439339828,11.5606602 C-0.109834957,11.0114854 -0.144158381,10.142423 0.336369556,9.55326224 L0.439339828,9.43933983 L9.43933983,0.439339828 C10.0251263,-0.146446609 10.9748737,-0.146446609 11.5606602,0.439339828 Z"></path>
+            </svg>
+            <span>Назад</span>
+          </a>
+          <a href="#" class="create-project__next button white step-next step-event">Далее</a>
         </div>
       </div>
-      <div class="create-project__main">
+      <div class="create-project__main wallet-block">
         <div class="create-project__wrap">
           <h2>Счёт и авторизация</h2>
           <div class="create-project__form-block wallet">
@@ -616,19 +625,22 @@
                 <!--              <label class="form-wallet-label tonhub" for="tonhub">Tonhub</label>-->
               </div>
             </div>
-            <div class="create-project__navigation">
-              <a href="#" class="create-project__back step-event step-prev">
-                <img src="images/Back.svg">
-                <span>Назад</span>
-              </a>
-              <button type="submit" class="create-project__next button white">Отправить проект</button>
-              <div class="error-box">
-                <div class="close"></div>
-                <h3>Кажется вы что-то пропустили</h3>
-                <p>Одно или несколько полей не заполнены или заполнены неверно. Пожалуйста, вернитесь назад и проверьте,
-                  что все поля заполнены верно.</p>
-              </div>
-            </div>
+          </div>
+        </div>
+        <div class="create-project__sidebar"></div>
+        <div class="create-project__navigation">
+          <a href="#" class="create-project__back step-event step-prev">
+            <svg viewBox="0 0 36 22" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.5606602,0.439339828 C12.109835,0.988514613 12.1441584,1.85757702 11.6636304,2.44673776 L11.5606602,2.56066017 L5.12,9 L34.5065848,9 C35.3313753,9 36,9.67157288 36,10.5 C36,11.2796961 35.4077234,11.9204487 34.6504107,11.9931334 L34.5065848,12 L5.12,12 L11.5606602,18.4393398 C12.109835,18.9885146 12.1441584,19.857577 11.6636304,20.4467378 L11.5606602,20.5606602 C11.0114854,21.109835 10.142423,21.1441584 9.55326224,20.6636304 L9.43933983,20.5606602 L0.439339828,11.5606602 C-0.109834957,11.0114854 -0.144158381,10.142423 0.336369556,9.55326224 L0.439339828,9.43933983 L9.43933983,0.439339828 C10.0251263,-0.146446609 10.9748737,-0.146446609 11.5606602,0.439339828 Z"></path>
+            </svg>
+            <span>Назад</span>
+          </a>
+          <button type="submit" class="create-project__next button white">Отправить</button>
+          <div class="error-box">
+            <div class="close"></div>
+            <h3>Кажется вы что-то пропустили</h3>
+            <p>Одно или несколько полей не заполнены или заполнены неверно. Пожалуйста, вернитесь назад и проверьте,
+              что все поля заполнены верно.</p>
           </div>
         </div>
       </div>

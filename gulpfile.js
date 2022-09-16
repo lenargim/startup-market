@@ -26,6 +26,12 @@ import changed       from 'gulp-changed'
 import concat        from 'gulp-concat'
 import rsync         from 'gulp-rsync'
 import {deleteAsync} from 'del'
+import  ghpages				from 'gh-pages'
+
+ghpages.publish('dist', {
+	branch: 'master',
+	repo: 'https://github.com/lenargim/startup-market.git',
+}, function(err) {});
 
 function browsersync() {
 	browserSync.init({

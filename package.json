@@ -24,6 +24,7 @@
 		"browsersync-ssi": "^0.2.4",
 		"cssnano": "^5.1.12",
 		"del": "^7.0.0",
+		"gh-pages": "^4.0.0",
 		"gulp": "^4.0.2",
 		"gulp-changed": "^4.0.3",
 		"gulp-concat": "^2.6.1",

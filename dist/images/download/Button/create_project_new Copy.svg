@@ -1,1 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><svg version="1.1" width="46px" height="46px" viewBox="0 0 46.0 46.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><clipPath id="i0"><path d="M23,0 C35.7025492,-2.33342044e-15 46,10.2974508 46,23 C46,35.7025492 35.7025492,46 23,46 C10.2974508,46 1.55561363e-15,35.7025492 0,23 C-1.55561363e-15,10.2974508 10.2974508,2.33342044e-15 23,0 Z"></path></clipPath><clipPath id="i1"><path d="M10,0 L10,5.999 L16,6 L16,10 L10,10 L10,16 L6,16 L6,10 L0,10 L0,6 L6,6 L6,0 L10,0 Z"></path></clipPath></defs><g clip-path="url(#i0)"><polygon points="0,0 46,0 46,46 0,46 0,0" stroke="none" fill="#06A0EC"></polygon><path d="M23,0 C35.7025492,-2.33342044e-15 46,10.2974508 46,23 C46,35.7025492 35.7025492,46 23,46 C10.2974508,46 1.55561363e-15,35.7025492 0,23 C-1.55561363e-15,10.2974508 10.2974508,2.33342044e-15 23,0 Z" stroke="#06A0EC" stroke-width="6" fill="none" stroke-miterlimit="5"></path></g><g transform="translate(15.0 15.0)"><g clip-path="url(#i1)"><polygon points="0,0 16,0 16,16 0,16 0,0" stroke="none" fill="#FFFFFF"></polygon></g></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Button/create_project_new Copy</title>
+    <g id="----Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Button/create_project_new-Copy">
+            <path d="M23,1.5 C28.9370611,1.5 34.3120611,3.90646947 38.2027958,7.7972042 C42.0935305,11.6879389 44.5,17.0629389 44.5,23 C44.5,28.9370611 42.0935305,34.3120611 38.2027958,38.2027958 C34.3120611,42.0935305 28.9370611,44.5 23,44.5 C17.0629389,44.5 11.6879389,42.0935305 7.7972042,38.2027958 C3.90646947,34.3120611 1.5,28.9370611 1.5,23 C1.5,17.0629389 3.90646947,11.6879389 7.7972042,7.7972042 C11.6879389,3.90646947 17.0629389,1.5 23,1.5 Z" id="Rectangle" stroke="#07A0EC" stroke-width="3" fill="#07A0EC"></path>
+            <polygon id="Path" fill="#FFFFFF" points="25 15 25 20.999 31 21 31 25 25 25 25 31 21 31 21 25 15 25 15 21 21 21 21 15"></polygon>
+        </g>
+    </g>
+</svg>
