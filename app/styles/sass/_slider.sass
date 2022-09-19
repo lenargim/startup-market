@@ -20,13 +20,15 @@
   &__prev
     transform: rotate(180deg)
 .slide
-  width: 66% !important
+  @include min(1024)
+    width: 66% !important
   &.swiper-slide-active
     z-index: 10
     .project__slide-img
       box-shadow: 0 19px 51px rgba(59,74,93, 0.464379), 0 6px 10px rgba(15,16,24, 0.253333)
       background-color: rgba(255,255,255, 1)
   &__img
+    display: block
     aspect-ratio: 897/506
     //height: 500px
     border-radius: 10px
@@ -43,10 +45,22 @@
     align-items: flex-start
     justify-content: space-between
     gap: 40px
+    @include between(1024, 1366)
+      margin-top: 40px
+      gap: 30px
+    @include between(768, 1024)
+      margin-top: 45px
+      gap: 30px
+    @include max(767)
+      flex-wrap: wrap
+      gap: 50px 24px
   &__text
     flex: 0 0 50%
     font: 400 16px/24px $mainFont
     color: #4A4A4A
+    @include max(767)
+      flex: 0 0 100%
+      order: 1
     .by
       font: 400 14px/22px $mainFont
     p:not(:last-child)
@@ -59,7 +73,10 @@
     align-items: center
     justify-content: flex-start
     gap: 4px
+    font-weight: 500
     white-space: nowrap
+    @include max(767)
+      order: 3
     svg
       width: 18px
       height: 18px
@@ -74,6 +91,15 @@
     color: #8D8D8D
     padding-bottom: 20px
     flex: 0 0 35%
+    @include between(1024, 1366)
+      flex: 0 0 174px
+    @include between(768, 1024)
+      flex: 0 0 220px
+    @include max(767)
+      order: 2
+      justify-content: flex-start
+    span
+      white-space: nowrap
     &::before
       content: ''
       position: absolute
@@ -98,6 +124,8 @@
       gap: 10px
       font: 500 16px/24px $mainFont
       color: #000
+      @include between(1024, 1366)
+        gap: 7px
     .max
       font: 400 16px/24px $mainFont
     svg

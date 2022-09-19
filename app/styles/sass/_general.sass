@@ -111,8 +111,14 @@ h1, h2, h3, h4, p, ul
   padding: 0
 h1
   font: 400 64px/88px $mainFont
+  @include between(768, 1366)
+    font: 400 48px/65px $mainFont
+  @include max(767)
+    font: 400 32px/44px $mainFont
 h2
   font: 400 48px/56px $mainFont
+  @include max(1365)
+    font: 400 32px/44px $mainFont
 h3
   font: 400 22px/32px $mainFont
 h4
@@ -216,10 +222,17 @@ nav a:hover
   &.add
     background: transparent
     border-radius: 23px
-    padding: 13px 24px
+    padding: 12px 21px 12px 15px
     border: 3px solid rgba(7,160,236, 1)
     color: #07A0EC
     font: 400 16px/20px $mainFont
+    @include max(1023)
+      border-radius: 50%
+      padding: 1px
+      width: 46px
+      height: 46px
+      span
+        display: none
     svg
       fill: #07A0EC
       width: 16px

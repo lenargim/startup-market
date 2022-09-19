@@ -68,7 +68,8 @@
     &:before
       background-image: url("../images/map.svg")
   &__navigation
-    margin-left: auto
+    @include min(1024)
+      margin-left: auto
   &__slider
     margin-bottom: 60px
     overflow: hidden

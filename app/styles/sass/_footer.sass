@@ -7,6 +7,12 @@
     grid-template-columns: repeat(3, 1fr)
     grid-gap: 30px
     margin-bottom: 50px
+    @include between(768, 1024)
+      grid-template-columns: repeat(2, 1fr)
+      grid-gap: 80px 40px
+    @include max(767)
+      grid-template-columns: 1fr
+      gap: 60px
   &__col
     &-title
       color: rgba(10,16,22,1)
@@ -18,6 +24,8 @@
     grid-template-columns: repeat(3, 1fr)
     grid-gap: 25px 35px
     margin-top: 34px
+    @include max(1365)
+      grid-template-columns: repeat(2, 1fr)
   &__link
     color: rgba(55,55,55,1)
     white-space: nowrap
@@ -46,17 +54,40 @@
     &::before
       background: url("../images/ton-dev.svg") center center/contain no-repeat
   &__right
-    max-width: 275px
-    margin-left: auto
+    @include min(1366)
+      max-width: 275px
+    @include min(1024)
+      margin-left: auto
+    @include between(1024, 1366)
+      max-width: 200px
+    @include between(768, 1024)
+      max-width: unset
+      grid-column: 1/-1
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      grid-gap: 40px
     .description
-      margin-top: 26px
+      color: #4A4A4A
+      @include min(1024)
+        margin-top: 26px
+      @include max(767)
+        margin-top: 36px
     .socials
       display: flex
       align-items: center
       justify-content: space-between
+      @include max(767)
+        border-top: 1px solid #858585
+        padding-top: 50px
       &__link
         width: 40px
         height: 40px
+        @include between(1024, 1366)
+          width: 30px
+          height: 30px
+        @include max(1023)
+          width: 47px
+          height: 47px
         svg
           transition: all 0.2s ease
           path

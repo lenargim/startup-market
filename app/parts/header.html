@@ -1,11 +1,27 @@
 <!--#include virtual="/parts/head.html" -->
 <body>
+<!-- Top Header navigation < 767px -->
+<div class="header__mobile">
+  <div class="container">
+    <nav class="header__mobile-nav">
+      <li class="header__mobile-li"><a href="#" class="header__mobile-link">Все проекты</a></li>
+      <li class="header__mobile-li"><a href="#" class="header__mobile-link">Криптопроекты</a></li>
+    </nav>
+  </div>
+</div>
+<!-- End Top Header navigation < 767px -->
+
 <header class="header">
   <div class="container">
     <div class="header__wrap">
-      <a href="/" class="header__logo header__part img">
-        <img src="images/logo.svg" alt='<!--#echo var="title" -->'>
-      </a>
+      <div class="header__part">
+        <a href="/" class="header__logo img">
+          <picture alt='<!--#echo var="title" -->'>
+            <source media="(max-width: 1023px)" srcset="images/copy.svg"/>
+            <img src="images/logo.svg">
+          </picture>
+        </a>
+      </div>
       <nav class="header__nav header__part">
         <li class="header__li"><a href="#" class="header__link">Все проекты</a></li>
         <li class="header__li"><a href="#" class="header__link">Криптопроекты</a></li>

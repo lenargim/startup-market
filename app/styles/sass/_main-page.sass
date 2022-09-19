@@ -1,32 +1,78 @@
 .main-page
   padding-bottom: 230px
+  @include between(768, 1366)
+    padding-bottom: 140px
+  @include max(767)
+    padding-bottom: 100px
   .banner
     height: calc(100vh - 100px)
+    @include max(767)
+      height: calc(100vh - 150px)
   &__title
     display: flex
     align-items: center
     justify-content: space-between
     gap: 30px
     padding: 100px 0
+    @include max(1023)
+      flex-direction: column
+      align-items: flex-start
+      justify-content: flex-start
+      gap: 85px
+    @include max(767)
+      gap: 60px
     h1
-      max-width: calc(7/12*100%)
+      @include min(1024)
+        max-width: calc(7/12*100%)
     .description
       display: flex
       flex-direction: column
       gap: 30px
       font: 500 22px/32px $mainFont
       flex: 0 0 311px
+      @include between(1024, 1366)
+        flex: 0 0 280px
+      @include between(768, 1024)
+        flex: unset
+        max-width: 280px
       a
         color: rgba(7,160,236,1)
         font: 400 16px/24px $mainFont
   &__categories
     margin-top: 175px
+    @include between(768, 1366)
+      margin-top: 140px
+    @include max(767)
+      margin-top: 100px
     h2
       padding-bottom: 105px
+      font-weight: 500
+      @include between(768, 1366)
+        padding-bottom: 60px
+      @include max(767)
+        padding-bottom: 30px
     &-wrap
       display: grid
       grid-template-columns: repeat(4, 1fr)
       grid-gap: 60px 10%
+      @include between(768, 1366)
+        grid-template-columns: repeat(3, 1fr)
+        grid-gap: 60px 45px
+      @include max(767)
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        gap: 20px
+        position: relative
+        left: -20px
+        right: -20px
+        width: calc(100% + 40px)
+        overflow-x: auto
+        -ms-overflow-style: none
+        scrollbar-width: none
+        padding: 20px
+        &::-webkit-scrollbar
+          display: none
     &-item
       font: 500 18px/24px $mainFont
       display: flex
@@ -34,24 +80,46 @@
       justify-content: flex-start
       gap: 30px
       white-space: nowrap
+      @include max(767)
+        flex-shrink: 0
+        flex-direction: column
+        gap: 10px
+        font: 500 14px/24px $mainFont
+        background: #fff
+        padding: 16px 16px 12px
+        border-radius: 9px
+        box-shadow: 0 6px 10px rgba(15,16,24, 0.253333)
       svg
         fill: $blue
         width: 50px
         height: 50px
   &__popular
     padding-top: 236px
+    @include between(768, 1366)
+      padding-top: 140px
+    @include max(767)
+      padding-top: 80px
     &-title
       display: flex
       align-items: center
       justify-content: space-between
       padding-bottom: 60px
+      h2
+        font-weight: 500
       a
         color: $blue
         font: 400 16px/24px $mainFont
+        @include max(767)
+          display: none
     &-wrap
       display: grid
       grid-template-columns: repeat(3, 1fr)
       grid-gap: 100px 40px
+      @include between(768, 1024)
+        grid-template-columns: repeat(2, 1fr)
+      @include max(767)
+        grid-template-columns: 1fr
+        grid-gap: 80px
     &-item
       display: flex
       flex-direction: column
@@ -101,6 +169,7 @@
     &-desc, &-author
       color: #4A4A4A
       font: 400 14px/22px $mainFont
+    &-desc
       margin-bottom: 15px
     &-row
       display: flex
@@ -109,10 +178,18 @@
       margin-top: auto
       padding-top: 45px
       gap: 60px
+      @include between(768, 1366)
+        padding-top: 65px
+        gap: 1em
+        justify-content: space-between
+      @include max(767)
+        gap: 34px
       svg
         width: 18px
         height: 18px
         fill: #878787
+        @include max(1023)
+          fill: $blue
     &-donation
       position: relative
       display: flex
@@ -121,6 +198,10 @@
       gap: 17px
       color: #8D8D8D
       padding-bottom: 20px
+      @include max(767)
+        flex: 0 0 50%
+      span
+        white-space: nowrap
       &::before
         content: ''
         position: absolute
@@ -138,6 +219,8 @@
         width: 0
         z-index: 1
         display: none
+        @include max(1023)
+          display: block
       .current
         display: flex
         align-items: center
@@ -145,6 +228,9 @@
         gap: 10px
         font: 500 16px/24px $mainFont
         color: #000
+        white-space: nowrap
+        @include between(768, 1366)
+          gap: 7px
       .max
         font: 400 16px/24px $mainFont
     &-time
@@ -152,15 +238,37 @@
       align-items: center
       gap: 17px
       font: 500 16px/24px $mainFont
+      white-space: nowrap
+      @include between(768, 1366)
+        gap: 7px
   &__new
-    margin-top: 44px
+    margin-top: 45px
+    @include between(768, 1024)
+      margin-top: 55px
     &-title
       display: flex
       align-items: center
+      @include between(768, 1024)
+        justify-content: space-between
+      @include max(767)
+        flex-wrap: wrap
+        gap: 50px 30px
+        justify-content: space-between
       h2
         flex: 0 0 66.6%
+        @include between(768, 1024)
+          flex: 0 0 calc(50% - 30px)
+        @include max(767)
+          flex: 0 0 100%
       a
         color: $blue
         font: 400 16px/24px $mainFont
   &__slider
     margin-top: 60px
+    @include between(768, 1024)
+      margin-top: 30px
+    @include max(767)
+      margin-top: 45px
+  &__mobile
+    &-button
+      margin-top: 80px

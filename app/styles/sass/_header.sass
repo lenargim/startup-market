@@ -6,25 +6,42 @@
     justify-content: space-between
     padding: 25px 0
     gap: 30px
+    @include between(768, 1024)
+      gap: 75px
   &__part
-    flex: 0 0 25%
+    flex-shrink: 0
+    @include min(1024)
+      flex: 0 0 calc(33.3% - 20px)
   &__logo
-    max-width: 206px
-    aspect-ratio: 206/46
+    @include min(1024)
+      max-width: 206px
+      aspect-ratio: 206/46
+    @include max(1023)
+      aspect-ratio: 1/1
+      width: 46px
   &__nav
     display: flex
     align-items: center
     justify-content: flex-start
     gap: 45px
+    @include between(1024, 1366)
+      gap: 32px
+    @include between(768, 1024)
+      gap: 22px
+    @include max(767)
+      display: none
   &__link
     white-space: nowrap
     font: 400 16px/25px $mainFont
   &__rightside
-    width: 25%
     display: flex
     align-items: center
-    justify-content: flex-end
+    margin-left: auto
     gap: 60px
+    @include between(1024, 1366)
+      gap: 32px
+    @include max(1023)
+      gap: 40px
   &__item
     display: flex
     align-items: center
@@ -46,6 +63,19 @@
       align-items: center
       justify-content: flex-end
       gap: 40px
+  &__mobile
+    background: #383838
+    padding: 12px 0
+    &-nav
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      gap: 22px
+    @include min(768)
+      display: none
+    &-link
+      color: #fff
+      font: 400 16px/24px $mainFont
 
 .header-create-project
   @include max(767)
