@@ -23,7 +23,7 @@ $(document).ready(function () {
     if ($(this).val() === '') {
       $(this).removeClass('focused');
       $(this).parents('.form-row').removeClass('active');
-      if ($(this).hasClass('required') ) {
+      if ($(this).hasClass('required')) {
         $(this).parent('.form-row').addClass('error');
         $(this).siblings('.form-error-empty').show()
       }
@@ -133,7 +133,7 @@ $(document).ready(function () {
 
   $('.form-input[type=text], .form-input[type=number]').on('input change', function () {
     const parent = $(this).parents('.form-row');
-    if ( $(this).hasClass('form-input-countered') ) {
+    if ($(this).hasClass('form-input-countered')) {
       const counter = $(this).siblings('.form-counter');
       const length = $(this).val().length;
       const max = counter.find('.max').text();
@@ -222,6 +222,16 @@ $(document).ready(function () {
       li.addClass('active');
       $('.create-project__main').eq(indexLi).addClass('active');
     }
+    if (window.innerWidth < 768) {
+      const activeLi = $('.header-create-project__menu li.active');
+      const offset = activeLi.position().left;
+      const nav = activeLi.parent('nav');
+      const left = nav.find('li:first-child').position().left;
+      const diff = offset - left ;
+      nav.animate({
+        scrollLeft: diff,
+      }, 1000)
+    }
     $('html, body').animate({
       scrollTop: $("#create-project-form").offset().top
     }, 1000);
@@ -294,8 +304,8 @@ $(document).ready(function () {
 
 
     // Highlight error menus
-    $('.header-create-project__menu li').each(function() {
-      cleanArr.includes($(this).index()) ? $(this).addClass('error') :  $(this).removeClass('error');
+    $('.header-create-project__menu li').each(function () {
+      cleanArr.includes($(this).index()) ? $(this).addClass('error') : $(this).removeClass('error');
     });
 
     // if no errors
@@ -303,12 +313,27 @@ $(document).ready(function () {
       const data = $(this).serializeArray();
       window.location.href = "./thankyou.html";
     }
-  })
+  });
 
   $('#award-img-filled').on('change, input', function () {
     console.log('ddd')
-  })
+  });
+
+  const myMenu = $('.header-create-project__menu');
+  if (myMenu.length) {
+    //showOffset(myMenu);
+  }
 });
+
+function showOffset(myMenu) {
+  if (window.innerWidth < 768) {
+    console.log(myMenu.scrollLeft());
+    setTimeout(function () {
+      showOffset(myMenu)
+    }, 1000);
+  }
+}
+
 
 function readFileAsUrl(file) {
   return new Promise(function (resolve, reject) {
