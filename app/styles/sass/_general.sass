@@ -55,6 +55,7 @@ button
 
 input
   margin: 0
+  padding: 0
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus
@@ -117,8 +118,10 @@ h1
     font: 400 32px/44px $mainFont
 h2
   font: 400 48px/56px $mainFont
-  @include max(1365)
+  @include between(768, 1366)
     font: 400 32px/44px $mainFont
+  @include max(767)
+    font: 500 22px/32px $mainFont
 h3
   font: 400 22px/32px $mainFont
 h4
@@ -171,6 +174,8 @@ address
 
 .main
   margin: 60px 0 150px
+  @include max(767)
+    margin-bottom: 100px
 
 .input
   background: transparent
@@ -219,13 +224,25 @@ nav a:hover
     &:hover
       background: #0F86C2
       color: #fff
-  &.add
+  &.add, &.submit
     background: transparent
     border-radius: 23px
     padding: 12px 21px 12px 15px
     border: 3px solid rgba(7,160,236, 1)
     color: #07A0EC
     font: 400 16px/20px $mainFont
+    svg
+      fill: #07A0EC
+      width: 16px
+      height: 16px
+      transition: all 0.2s ease
+    @include min(1280)
+      &:hover
+        background: #07A0EC
+        color: #fff
+        svg
+          fill: #fff
+  &.add
     @include max(1023)
       border-radius: 50%
       padding: 1px
@@ -233,16 +250,6 @@ nav a:hover
       height: 46px
       span
         display: none
-    svg
-      fill: #07A0EC
-      width: 16px
-      height: 16px
-      transition: all 0.2s ease
-    &:hover
-      background: #07A0EC
-      color: #fff
-      svg
-        fill: #fff
 
 .bg-gray
   background: $gray

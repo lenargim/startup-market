@@ -11,8 +11,9 @@
     display: flex
     align-items: center
     justify-content: center
-    &:hover
-      background: $blue
+    @include min(1280)
+      &:hover
+        background: $blue
     svg
       fill: #fff
       width: 18px
@@ -24,13 +25,12 @@
     width: 66% !important
   &.swiper-slide-active
     z-index: 10
-    .project__slide-img
+    .slide__img
       box-shadow: 0 19px 51px rgba(59,74,93, 0.464379), 0 6px 10px rgba(15,16,24, 0.253333)
       background-color: rgba(255,255,255, 1)
   &__img
     display: block
     aspect-ratio: 897/506
-    //height: 500px
     border-radius: 10px
     transform-origin: left center
     overflow: hidden
@@ -55,7 +55,7 @@
       flex-wrap: wrap
       gap: 50px 24px
   &__text
-    flex: 0 0 50%
+    flex: 0 0 calc(50% - 30px)
     font: 400 16px/24px $mainFont
     color: #4A4A4A
     @include max(767)

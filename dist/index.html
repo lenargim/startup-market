@@ -22,12 +22,28 @@
 </head>
 
 <body>
+<!-- Top Header navigation < 767px -->
+<div class="header__mobile">
+  <div class="container">
+    <nav class="header__mobile-nav">
+      <li class="header__mobile-li"><a href="#" class="header__mobile-link">Все проекты</a></li>
+      <li class="header__mobile-li"><a href="#" class="header__mobile-link">Криптопроекты</a></li>
+    </nav>
+  </div>
+</div>
+<!-- End Top Header navigation < 767px -->
+
 <header class="header">
   <div class="container">
     <div class="header__wrap">
-      <a href="/" class="header__logo header__part img">
-        <img src="images/logo.svg" alt='Startup'>
-      </a>
+      <div class="header__part">
+        <a href="/" class="header__logo img">
+          <picture alt='Startup'>
+            <source media="(max-width: 1023px)" srcset="images/copy.svg"/>
+            <img src="images/logo.svg">
+          </picture>
+        </a>
+      </div>
       <nav class="header__nav header__part">
         <li class="header__li"><a href="#" class="header__link">Все проекты</a></li>
         <li class="header__li"><a href="#" class="header__link">Криптопроекты</a></li>
@@ -88,7 +104,7 @@
       <div class="main-page__slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide slide">
-            <div class="slide__img"><img src="images/slider/slider1.png" alt="slider name"></div>
+            <a href="project.html" class="slide__img"><img src="images/slider/slider1.png" alt="slider name"></a>
             <div class="slide__desc">
               <div class="slide__text">
                 <h3 class="slide__title">EXIT VEIL: Оккультизм и Таро JRPG</h3>
@@ -114,11 +130,12 @@
             </div>
           </div>
           <div class="swiper-slide slide">
-            <div class="slide__img"><img src="images/slider/slider2.png" alt="slider name"></div>
+            <a href="project.html" class="slide__img"><img src="images/slider/slider2.png" alt="slider name"></a>
             <div class="slide__desc">
               <div class="slide__text">
                 <h3 class="slide__title">RobotCreator DX — ваш новый <br>робот-помощник</h3>
-                <p>Встречайте RobotCreator DX! Новый, широко настраиваемый робот, разработанный для всех! RobotCreator DX — это не просто робот…</p>
+                <p>Встречайте RobotCreator DX! Новый, широко настраиваемый робот, разработанный для всех! RobotCreator
+                  DX — это не просто робот…</p>
                 <p class="by">by Алексей Коваль</p>
               </div>
               <div class="slide__days">
@@ -140,7 +157,7 @@
             </div>
           </div>
           <div class="swiper-slide slide">
-            <div class="slide__img"><img src="images/slider/slider3.png" alt="slider name"></div>
+            <a href="project.html" class="slide__img"><img src="images/slider/slider3.png" alt="slider name"></a>
             <div class="slide__desc">
               <div class="slide__text">
                 <h3 class="slide__title">EXIT VEIL: Оккультизм и Таро JRPG</h3>
@@ -394,6 +411,8 @@
           </div>
         </a>
       </div>
+      <!--   Button appears only < 767px   -->
+      <a href="#" class="button white main-page__mobile-button">Смотреть все</a>
     </div>
   </div>
 </main>

@@ -25,7 +25,8 @@ $(document).ready(function () {
       $(this).parents('.form-row').removeClass('active');
       if ($(this).hasClass('required')) {
         $(this).parent('.form-row').addClass('error');
-        $(this).siblings('.form-error-empty').show()
+        $(this).siblings('.form-error-empty').show();
+        $(this).siblings('.form-description').hide();
       }
     }
   });
@@ -142,6 +143,7 @@ $(document).ready(function () {
       if (length > max) {
         parent.removeClass('active').addClass('error');
         $(this).siblings('.form-error-length').show();
+        $(this).siblings('.form-description').hide();
         $(this).addClass('error-length');
       } else {
         parent.addClass('active').removeClass('error');
@@ -151,6 +153,7 @@ $(document).ready(function () {
     } else {
       parent.removeClass('error');
       $(this).siblings('.form-error').hide();
+      $(this).siblings('.form-description').show();
       //$(this).removeClass('error-length');
     }
   });
@@ -169,10 +172,12 @@ $(document).ready(function () {
       $(this).addClass('mail-mask-error');
       $(this).parent('.form-row').addClass('error');
       $(this).siblings('.form-error-mail').show();
+      $(this).siblings('.form-description').hide();
     } else {
       $(this).removeClass('mail-mask-error');
       $(this).parent('.form-row').removeClass('error');
       $(this).siblings('.form-error-mail').hide();
+      $(this).siblings('.form-description').show();
     }
   });
 
@@ -236,6 +241,8 @@ $(document).ready(function () {
       scrollTop: $("#create-project-form").offset().top
     }, 1000);
   });
+
+
 
   $('#award-delivery, #award-delivery-filled').on('change', function () {
     const parent = $(this).parents('.award__delivery');
