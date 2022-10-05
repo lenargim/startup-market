@@ -70,10 +70,10 @@ $(document).ready(function () {
     if (slider.length) {
       let screenOffset = window.pageYOffset;
       if (window.innerWidth > 1023) {
-        if ( screenOffset > offset && screenOffset < docHeight ) {
-          let top = screenOffset - offset - 40;
-          $('.could-fixed').css('top', top)
-        }
+        // if ( screenOffset > offset && screenOffset < docHeight ) {
+        //   let top = screenOffset - offset - 40;
+        //   $('.could-fixed').css('top', top)
+        // }
       } else {
         if (screenOffset > offset) {
           $('.could-fixed-mobile').addClass('fixed')
@@ -83,4 +83,14 @@ $(document).ready(function () {
       }
     }
   });
+
+  let parent = document.querySelector('.project__sidebar').parentElement;
+
+  while (parent) {
+    const hasOverflow = getComputedStyle(parent).overflow;
+    if (hasOverflow !== 'visible') {
+      console.log(hasOverflow, parent);
+    }
+    parent = parent.parentElement;
+  }
 });
